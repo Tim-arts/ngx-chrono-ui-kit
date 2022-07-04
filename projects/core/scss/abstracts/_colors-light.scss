@@ -1,0 +1,516 @@
+@use 'sass:map';
+
+@use './functions' as functions;
+
+$md3-primary: (
+  100: #FFFFFF,
+  99: #FDFBFF,
+  95: #EDF0FF,
+  90: #D9E2FF,
+  80: #B0C6FF,
+  70: #85A9FF,
+  60: #558CFF,
+  50: #0F6EFF,
+  40: #0056D3,
+  30: #0040A3,
+  20: #002B74,
+  10: #001849,
+  0: #000000
+);
+$md3-secondary: (
+  100: #FFFFFF,
+  99: #FFFBFC,
+  95: #F9EDFF,
+  90: #EDDBFF,
+  80: #D7B9FF,
+  70: #C197FF,
+  60: #AB72FF,
+  50: #9649FF,
+  40: #7D0BF6,
+  30: #5E00C2,
+  20: #42008B,
+  10: #270058,
+  0: #000000
+);
+$md3-tertiary: (
+  100: #FFFFFF,
+  99: #F6FDFF,
+  95: #D3F7FF,
+  90: #A1EEFF,
+  80: #02DAF9,
+  70: #00BCD8,
+  60: #009FB7,
+  50: #008397,
+  40: #006878,
+  30: #004E5B,
+  20: #003640,
+  10: #001F25,
+  0: #000000
+);
+$md3-neutral: (
+  100: #FFFFFF,
+  99: #FDFBFF,
+  95: #F2F0F5,
+  90: #E4E2E6,
+  80: #C8C6CA,
+  70: #ACABAF,
+  60: #919094,
+  50: #77777B,
+  40: #5E5E62,
+  30: #46464A,
+  20: #303033,
+  10: #1B1B1E,
+  0: #000000
+);
+$md3-neutral-variant: (
+  100: #FFFFFF,
+  99: #FDFBFF,
+  95: #F0F0FA,
+  90: #E2E2EC,
+  80: #C5C6D0,
+  70: #AAABB5,
+  60: #8F909A,
+  50: #757780,
+  40: #5C5E67,
+  30: #44464E,
+  20: #2E3038,
+  10: #191B23,
+  0: #000000
+);
+$md3-error: (
+  100: #FFFFFF,
+  99: #FCFCFC,
+  95: #FFEDEA,
+  90: #FFDAD6,
+  80: #FFB3AC,
+  70: #FF8983,
+  60: #F55D5B,
+  50: #D34444,
+  40: #B12C2F,
+  30: #8F0F1A,
+  20: #68000A,
+  10: #410004,
+  0: #000000
+);
+$md3-success: (
+  100: #FFFFFF,
+  99: #F4FFF8,
+  95: #B9FFDF,
+  90: #87F8C9,
+  80: #69DBAE,
+  70: #4BBF94,
+  60: #28A37A,
+  50: #008862,
+  40: #006C4C,
+  30: #005138,
+  20: #003826,
+  10: #002115,
+  0: #000000
+);
+$md3-warning: (
+  100: #FFFFFF,
+  99: #FCFCFC,
+  95: #FFEED8,
+  90: #FFDDB3,
+  80: #FFB956,
+  70: #E69C2E,
+  60: #C7820F,
+  50: #A76A00,
+  40: #855400,
+  30: #653E00,
+  20: #472A00,
+  10: #2A1700,
+  0: #000000
+);
+$md3-information: (
+  100: #FFFFFF,
+  99: #FDFBFF,
+  95: #EFF0FF,
+  90: #DBE1FF,
+  80: #B5C4FF,
+  70: #8EA7FF,
+  60: #6689FF,
+  50: #396AFF,
+  40: #034DE8,
+  30: #0038B8,
+  20: #002585,
+  10: #001454,
+  0: #000000
+);
+
+// BACKGROUND
+$background: #FDFBFF;
+$on-background: #1B1B1E;
+
+// SURFACE
+$_surface: #FDFBFF;
+$_on-surface: #1B1B1E;
+$_surface-variant: #E2E2EC;
+$_on-surface-variant: #44464E;
+
+$surface: (
+  sys: (
+    surface: $_surface,
+    on-surface: $_on-surface,
+    surface-variant: $_surface-variant,
+    on-surface-variant: $_on-surface-variant
+  ),
+  read-only: (
+    surface: (
+      opacity-0\.08: transparentize($_surface, .92),
+      opacity-0\.12: transparentize($_surface, .88),
+      opacity-0\.16: transparentize($_surface, .84)
+    ),
+    on-surface: (
+      opacity-0\.08: transparentize($_surface, .92),
+      opacity-0\.12: transparentize($_on-surface, .88),
+      opacity-0\.16: transparentize($_on-surface, .84),
+      opacity-0\.38: transparentize($_on-surface, .62)
+    ),
+    surface-variant: (
+      opacity-0\.08: transparentize($_surface-variant, .92),
+      opacity-0\.12: transparentize($_surface-variant, .88),
+      opacity-0\.16: transparentize($_surface-variant, .84)
+    ),
+    on-surface-variant: (
+      opacity-0\.08: transparentize($_on-surface-variant, .92),
+      opacity-0\.12: transparentize($_on-surface-variant, .88),
+      opacity-0\.16: transparentize($_on-surface-variant, .84)
+    )
+  )
+);
+
+// DEFAULT
+$_default: #5E5E62;
+$_on-default: #FFF;
+$_default-container: #E4E2E6;
+$_on-default-container: #1B1B1E;
+
+$default: (
+  ref: $md3-neutral,
+  sys: (
+    default: $_default,
+    on-default: $_on-default,
+    default-container: $_default-container,
+    on-default-container: $_on-default-container,
+    \:states: (
+      elevated: (
+        hovered: functions.colors-blending($_surface, transparentize($_default, .92)),
+        focused: functions.colors-blending($_surface, transparentize($_default, .88)),
+        pressed: functions.colors-blending($_surface, transparentize($_default, .88))
+      ),
+      filled: (
+        hovered: functions.colors-blending($_default, transparentize($_on-default, .92)),
+        focused: functions.colors-blending($_default, transparentize($_on-default, .88)),
+        pressed: functions.colors-blending($_default, transparentize($_on-default, .88))
+      ),
+      filled-tonal: (
+        hovered: functions.colors-blending($_default-container, transparentize($_on-default-container, .92)),
+        focused: functions.colors-blending($_default-container, transparentize($_on-default-container, .88)),
+        pressed: functions.colors-blending($_default-container, transparentize($_on-default-container, .88))
+      ),
+      outlined: (
+        hovered: transparentize($_default, .92),
+        focused: transparentize($_default, .88),
+        pressed: transparentize($_default, .88)
+      ),
+      text: (
+        hovered: transparentize($_default, .92),
+        focused: transparentize($_default, .88),
+        pressed: transparentize($_default, .88)
+      ),
+      fab: (
+        hovered: functions.colors-blending($_default-container, transparentize($_on-default-container, .92)),
+        focused: functions.colors-blending($_default-container, transparentize($_on-default-container, .88)),
+        pressed: functions.colors-blending($_default-container, transparentize($_on-default-container, .88)),
+        inverted-focused: functions.colors-blending($_surface, transparentize($_default, .92)),
+        inverted-hovered: functions.colors-blending($_surface, transparentize($_default, .88)),
+        inverted-pressed: functions.colors-blending($_surface, transparentize($_default, .88)),
+      ),
+      extended-fab: (
+        hovered: functions.colors-blending($_default-container, transparentize($_on-default-container, .92)),
+        focused: functions.colors-blending($_default-container, transparentize($_on-default-container, .88)),
+        pressed: functions.colors-blending($_default-container, transparentize($_on-default-container, .88))
+      )
+    )
+  ),
+  read-only: (
+    default: (
+      opacity-0\.08: transparentize($_default, .92),
+      opacity-0\.12: transparentize($_default, .88),
+      opacity-0\.16: transparentize($_default, .84)
+    ),
+    on-default: (
+      opacity-0\.08: transparentize($_on-default, .92),
+      opacity-0\.12: transparentize($_on-default, .88),
+      opacity-0\.16: transparentize($_on-default, .84)
+    ),
+    default-container: (
+      opacity-0\.08: transparentize($_default-container, .92),
+      opacity-0\.12: transparentize($_default-container, .88),
+      opacity-0\.16: transparentize($_default-container, .84)
+    ),
+    on-default-container: (
+      opacity-0\.08: transparentize($_on-default-container, .92),
+      opacity-0\.12: transparentize($_on-default-container, .88),
+      opacity-0\.16: transparentize($_on-default-container, .84)
+    )
+  )
+);
+
+// PRIMARY
+$_primary: #0056D3;
+$_on-primary: #FFF;
+$_primary-container: #D9E2FF;
+$_on-primary-container: #001849;
+
+$primary: (
+  sys: (
+    primary: $_primary,
+    on-primary: $_on-primary,
+    primary-container: $_primary-container,
+    on-primary-container: $_on-primary-container,
+    \:states: (
+      elevated: (
+        hovered: functions.colors-blending($_surface, transparentize($_primary, .92)),
+        focused: functions.colors-blending($_surface, transparentize($_primary, .88)),
+        pressed: functions.colors-blending($_surface, transparentize($_primary, .88))
+      ),
+      filled: (
+        hovered: functions.colors-blending($_primary, transparentize($_on-primary, .92)),
+        focused: functions.colors-blending($_primary, transparentize($_on-primary, .88)),
+        pressed: functions.colors-blending($_primary, transparentize($_on-primary, .88))
+      ),
+      filled-tonal: (
+        hovered: functions.colors-blending($_primary-container, transparentize($_on-primary-container, .92)),
+        focused: functions.colors-blending($_primary-container, transparentize($_on-primary-container, .88)),
+        pressed: functions.colors-blending($_primary-container, transparentize($_on-primary-container, .88))
+      ),
+      outlined: (
+        hovered: transparentize($_primary, .92),
+        focused: transparentize($_primary, .88),
+        pressed: transparentize($_primary, .88)
+      ),
+      text: (
+        hovered: transparentize($_primary, .92),
+        focused: transparentize($_primary, .88),
+        pressed: transparentize($_primary, .88)
+      ),
+      fab: (
+        hovered: functions.colors-blending($_primary-container, transparentize($_on-primary-container, .92)),
+        focused: functions.colors-blending($_primary-container, transparentize($_on-primary-container, .88)),
+        pressed: functions.colors-blending($_primary-container, transparentize($_on-primary-container, .88)),
+        inverted-focused: functions.colors-blending($_surface, transparentize($_primary, .92)),
+        inverted-hovered: functions.colors-blending($_surface, transparentize($_primary, .88)),
+        inverted-pressed: functions.colors-blending($_surface, transparentize($_primary, .88)),
+      ),
+      extended-fab: (
+        hovered: functions.colors-blending($_primary-container, transparentize($_on-primary-container, .92)),
+        focused: functions.colors-blending($_primary-container, transparentize($_on-primary-container, .88)),
+        pressed: functions.colors-blending($_primary-container, transparentize($_on-primary-container, .88))
+      )
+    )
+  ),
+  read-only: (
+    primary: (
+      opacity-0\.08: transparentize($_primary, .92),
+      opacity-0\.12: transparentize($_primary, .88),
+      opacity-0\.16: transparentize($_primary, .84)
+    ),
+    on-primary: (
+      opacity-0\.08: transparentize($_on-primary, .92),
+      opacity-0\.12: transparentize($_on-primary, .88),
+      opacity-0\.16: transparentize($_on-primary, .84)
+    ),
+    primary-container: (
+      opacity-0\.08: transparentize($_primary-container, .92),
+      opacity-0\.12: transparentize($_primary-container, .88),
+      opacity-0\.16: transparentize($_primary-container, .84)
+    ),
+    on-primary-container: (
+      opacity-0\.08: transparentize($_on-primary-container, .92),
+      opacity-0\.12: transparentize($_on-primary-container, .88),
+      opacity-0\.16: transparentize($_on-primary-container, .84)
+    )
+  )
+);
+
+// SECONDARY
+$_secondary: #7D0BF6;
+$_on-secondary: #FFF;
+$_secondary-container: #EDDBFF;
+$_on-secondary-container: #270058;
+
+$secondary: (
+  sys: (
+    secondary: $_secondary,
+    on-secondary: $_on-secondary,
+    secondary-container: $_secondary-container,
+    on-secondary-container: $_on-secondary-container,
+    \:states: (
+      elevated: (
+        hovered: functions.colors-blending($_surface, transparentize($_secondary, .92)),
+        focused: functions.colors-blending($_surface, transparentize($_secondary, .88)),
+        pressed: functions.colors-blending($_surface, transparentize($_secondary, .88))
+      ),
+      filled: (
+        hovered: functions.colors-blending($_secondary, transparentize($_on-secondary, .92)),
+        focused: functions.colors-blending($_secondary, transparentize($_on-secondary, .88)),
+        pressed: functions.colors-blending($_secondary, transparentize($_on-secondary, .88))
+      ),
+      filled-tonal: (
+        hovered: functions.colors-blending($_secondary-container, transparentize($_on-secondary-container, .92)),
+        focused: functions.colors-blending($_secondary-container, transparentize($_on-secondary-container, .88)),
+        pressed: functions.colors-blending($_secondary-container, transparentize($_on-secondary-container, .88))
+      ),
+      outlined: (
+        hovered: transparentize($_secondary, .92),
+        focused: transparentize($_secondary, .88),
+        pressed: transparentize($_secondary, .88)
+      ),
+      text: (
+        hovered: transparentize($_secondary, .92),
+        focused: transparentize($_secondary, .88),
+        pressed: transparentize($_secondary, .88)
+      ),
+      fab: (
+        hovered: functions.colors-blending($_secondary-container, transparentize($_on-secondary-container, .92)),
+        focused: functions.colors-blending($_secondary-container, transparentize($_on-secondary-container, .88)),
+        pressed: functions.colors-blending($_secondary-container, transparentize($_on-secondary-container, .88)),
+        inverted-focused: functions.colors-blending($_surface, transparentize($_secondary, .92)),
+        inverted-hovered: functions.colors-blending($_surface, transparentize($_secondary, .88)),
+        inverted-pressed: functions.colors-blending($_surface, transparentize($_secondary, .88)),
+      ),
+      extended-fab: (
+        hovered: functions.colors-blending($_secondary-container, transparentize($_on-secondary-container, .92)),
+        focused: functions.colors-blending($_secondary-container, transparentize($_on-secondary-container, .88)),
+        pressed: functions.colors-blending($_secondary-container, transparentize($_on-secondary-container, .88))
+      )
+    )
+  ),
+  read-only: (
+    secondary: (
+      opacity-0\.08: transparentize($_secondary, .92),
+      opacity-0\.12: transparentize($_secondary, .88),
+      opacity-0\.16: transparentize($_secondary, .84)
+    ),
+    on-secondary: (
+      opacity-0\.08: transparentize($_on-secondary, .92),
+      opacity-0\.12: transparentize($_on-secondary, .88),
+      opacity-0\.16: transparentize($_on-secondary, .84)
+    ),
+    secondary-container: (
+      opacity-0\.08: transparentize($_secondary-container, .92),
+      opacity-0\.12: transparentize($_secondary-container, .88),
+      opacity-0\.16: transparentize($_secondary-container, .84)
+    ),
+    on-secondary-container: (
+      opacity-0\.08: transparentize($_on-secondary-container, .92),
+      opacity-0\.12: transparentize($_on-secondary-container, .88),
+      opacity-0\.16: transparentize($_on-secondary-container, .84)
+    )
+  )
+);
+
+// TERTIARY
+$_tertiary: #006878;
+$_on-tertiary: #FFF;
+$_tertiary-container: #A1EEFF;
+$_on-tertiary-container: #001F25;
+
+$tertiary: (
+  sys: (
+    tertiary: $_tertiary,
+    on-tertiary: $_on-tertiary,
+    tertiary-container: $_tertiary-container,
+    on-tertiary-container: $_on-tertiary-container,
+    \:states: (
+      elevated: (
+        hovered: functions.colors-blending($_surface, transparentize($_tertiary, .92)),
+        focused: functions.colors-blending($_surface, transparentize($_tertiary, .88)),
+        pressed: functions.colors-blending($_surface, transparentize($_tertiary, .88))
+      ),
+      filled: (
+        hovered: functions.colors-blending($_tertiary, transparentize($_on-tertiary, .92)),
+        focused: functions.colors-blending($_tertiary, transparentize($_on-tertiary, .88)),
+        pressed: functions.colors-blending($_tertiary, transparentize($_on-tertiary, .88))
+      ),
+      filled-tonal: (
+        hovered: functions.colors-blending($_tertiary-container, transparentize($_on-tertiary-container, .92)),
+        focused: functions.colors-blending($_tertiary-container, transparentize($_on-tertiary-container, .88)),
+        pressed: functions.colors-blending($_tertiary-container, transparentize($_on-tertiary-container, .88))
+      ),
+      outlined: (
+        hovered: transparentize($_tertiary, .92),
+        focused: transparentize($_tertiary, .88),
+        pressed: transparentize($_tertiary, .88)
+      ),
+      text: (
+        hovered: transparentize($_tertiary, .92),
+        focused: transparentize($_tertiary, .88),
+        pressed: transparentize($_tertiary, .88)
+      ),
+      fab: (
+        hovered: functions.colors-blending($_tertiary-container, transparentize($_on-tertiary-container, .92)),
+        focused: functions.colors-blending($_tertiary-container, transparentize($_on-tertiary-container, .88)),
+        pressed: functions.colors-blending($_tertiary-container, transparentize($_on-tertiary-container, .88)),
+        inverted-focused: functions.colors-blending($_surface, transparentize($_tertiary, .92)),
+        inverted-hovered: functions.colors-blending($_surface, transparentize($_tertiary, .88)),
+        inverted-pressed: functions.colors-blending($_surface, transparentize($_tertiary, .88)),
+      ),
+      extended-fab: (
+        hovered: functions.colors-blending($_tertiary-container, transparentize($_on-tertiary-container, .92)),
+        focused: functions.colors-blending($_tertiary-container, transparentize($_on-tertiary-container, .88)),
+        pressed: functions.colors-blending($_tertiary-container, transparentize($_on-tertiary-container, .88))
+      )
+    )
+  ),
+  read-only: (
+    tertiary: (
+      opacity-0\.08: transparentize($_tertiary, .92),
+      opacity-0\.12: transparentize($_tertiary, .88),
+      opacity-0\.16: transparentize($_tertiary, .84)
+    ),
+    on-tertiary: (
+      opacity-0\.08: transparentize($_on-tertiary, .92),
+      opacity-0\.12: transparentize($_on-tertiary, .88),
+      opacity-0\.16: transparentize($_on-tertiary, .84)
+    ),
+    tertiary-container: (
+      opacity-0\.08: transparentize($_tertiary-container, .92),
+      opacity-0\.12: transparentize($_tertiary-container, .88),
+      opacity-0\.16: transparentize($_tertiary-container, .84)
+    ),
+    on-tertiary-container: (
+      opacity-0\.08: transparentize($_on-tertiary-container, .92),
+      opacity-0\.12: transparentize($_on-tertiary-container, .88),
+      opacity-0\.16: transparentize($_on-tertiary-container, .84)
+    )
+  )
+);
+
+$outline: #757780;
+
+// ERROR
+$error: #BA1B1B;
+$on-error: #FFF;
+$error-container: #FFDAD4;
+$on-error-container: #410001;
+
+//SUCCESS
+$success: #006C4F;
+$on-success: #FFF;
+$success-container: #84F8CC;
+$on-success-container: #002116;
+
+// INFORMATION
+$information: #0046FA;
+$on-information: #FFF;
+$information-container: #DCE1FF;
+$on-information-container: #00115A;
+
+// WARNING
+$warning: #855400;
+$on-warning: #FFF;
+$warning-container: #FFDDB3;
+$on-warning-container: #2A1700;

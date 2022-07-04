@@ -1,0 +1,14 @@
+<div class='alert-container'>
+  <div class='alert-header d-flex align-items-center justify-content-space-between'>
+  <span class="d-flex">
+    <span class='alert-icon'>
+      <mat-icon class='position-relative mat-icon-mini'>{{ icon }}</mat-icon>
+    </span>
+    <span class='text-title-small'>{{ title }}</span>
+  </span>
+    <ui-kit-button type='text' size='mini' icon='close' (click)='close()' *ngIf="type === 'toast'"></ui-kit-button>
+  </div>
+  <div class='alert-content' *ngIf="content && type !== 'inline'">
+    <p>{{ content }}</p>
+  </div>
+</div>

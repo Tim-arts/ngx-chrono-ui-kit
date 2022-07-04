@@ -1,0 +1,60 @@
+// After switching to MD3, we should implement the typography styles directly into ./themes to use the corresponding MD3 API
+
+@use '../abstracts/typography' as typography;
+@use '../abstracts/mixins' as mixins;
+
+.mat-typography h1 {
+  @include mixins.shared-simple-properties-generator(typography.$headline1);
+}
+
+.mat-typography h2 {
+  @include mixins.shared-simple-properties-generator(typography.$headline2);
+}
+
+.mat-typography h3 {
+  @include mixins.shared-simple-properties-generator(typography.$headline3);
+}
+
+.mat-typography h4 {
+  @include mixins.shared-simple-properties-generator(typography.$headline4);
+}
+
+.mat-typography h5 {
+  @include mixins.shared-simple-properties-generator(typography.$headline5);
+}
+
+.mat-typography h6 {
+  @include mixins.shared-simple-properties-generator(typography.$headline6);
+}
+
+.text {
+  @include mixins.shared-properties-generator(typography.$display, display);
+  @include mixins.shared-properties-generator(typography.$headline, headline);
+  @include mixins.shared-properties-generator(typography.$title, title);
+  @include mixins.shared-properties-generator(typography.$label, label);
+  @include mixins.shared-properties-generator(typography.$body, body);
+
+  @include mixins.shared-properties-generator(typography.$display1, display1);
+  @include mixins.shared-properties-generator(typography.$display2, display2);
+  @include mixins.shared-properties-generator(typography.$display3, display3);
+
+  @include mixins.shared-properties-generator(typography.$headline1, headline1);
+  @include mixins.shared-properties-generator(typography.$headline2, headline2);
+  @include mixins.shared-properties-generator(typography.$headline3, headline3);
+  @include mixins.shared-properties-generator(typography.$headline4, headline4);
+  @include mixins.shared-properties-generator(typography.$headline5, headline5);
+  @include mixins.shared-properties-generator(typography.$headline6, headline6);
+  @include mixins.shared-properties-generator(typography.$subhead1, subhead1);
+  @include mixins.shared-properties-generator(typography.$subhead2, subhead2);
+
+  @include mixins.shared-properties-generator(typography.$button, button);
+  @include mixins.shared-properties-generator(typography.$body1, body1);
+  @include mixins.shared-properties-generator(typography.$body2, body2);
+  @include mixins.shared-properties-generator(typography.$caption, caption);
+  @include mixins.shared-properties-generator(typography.$overline, overline);
+  @include mixins.shared-properties-generator(typography.$labelSmall, labelSmall);
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}

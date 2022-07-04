@@ -1,0 +1,13 @@
+@use 'sass:map';
+
+@use '../../abstracts/colors' as colors;
+
+[cdkDragHandle] {
+  mat-icon {
+    color: map.get(colors.$md3-neutral, 80);
+  }
+
+  .button-content {
+    cursor: move;
+  }
+}

@@ -1,0 +1,22 @@
+@use 'sass:map';
+
+@use '../abstracts/colors' as colors;
+
+/* Background-color utilities */
+.bg-neutral-95 {
+  background-color: map.get(colors.$md3-neutral, 95);
+}
+
+.bg-primary-95 {
+  background-color: map.get(colors.$md3-primary, 95);
+}
+
+/* Color utilities */
+
+.color-primary {
+  color: map.get(colors.$md3-primary, 40);
+}
+
+.color-secondary {
+  color: map.get(colors.$md3-secondary, 40);
+}

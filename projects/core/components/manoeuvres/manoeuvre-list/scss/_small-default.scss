@@ -1,0 +1,25 @@
+:host {
+    display: grid;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 50rem;
+    grid-template-columns: 1fr;
+    padding: 0;
+    margin: 0;
+    ::ng-deep.view .mat-pseudo-checkbox {display: none; }
+}
+
+.ui-kit-manoeuvre-trajet {
+    display: grid;
+}
+
+.ui-kit-manoeuvre-trajet .mat-pseudo-checkbox {
+    visibility: hidden;
+}
+
+.liste-vide {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}

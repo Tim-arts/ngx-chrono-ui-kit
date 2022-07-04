@@ -1,0 +1,216 @@
+@use 'sass:map';
+@use 'sass:string';
+@use 'sass:list';
+
+@use '../colors' as colors;
+@use '../functions' as functions;
+
+/*
+ * generator - Automates type variants creation by generating component utility classes from a set of SASS map properties
+ * @params
+ *  {Map} $map - SCSS map
+ *
+ * Usage example
+ *
+  &.button-type {
+    @include mixins.variants-button-generator($config);
+  }
+ *
+**/
+@mixin types-button-generator ($map) {
+  @each $iKey, $iValue in $map {
+    &-#{$iKey} {
+      @if type-of($iValue) == 'map' {
+        @each $jKey, $jValue in $iValue {
+          @if $jKey == _shared {
+            @each $kKey, $kValue in $jValue {
+              @if type-of($kValue) != 'map' {
+                .button-content {
+                  #{$kKey}: $kValue;
+                }
+              } @else {
+                @if $kKey == \:states {
+                  @each $lKey, $lValue in $kValue {
+                    .button-content {
+                      &:#{$lKey} {
+                        @each $mKey, $mValue in $lValue {
+                          #{$mKey}: $mValue;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          } @else {
+            &.button-color {
+              &-#{$jKey} {
+                @each $kKey, $kValue in $jValue {
+                  @if type-of($kValue) != 'map' {
+                    .button-content {
+                      #{$kKey}: $kValue;
+                    }
+                  } @else {
+                    @if $kKey == \:states {
+                      @each $lKey, $lValue in $kValue {
+                        .button-content {
+                          &:#{$lKey} {
+                            @each $mKey, $mValue in $lValue {
+                              #{$mKey}: $mValue;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+ * generator - Automates size variants creation by generating component utility classes from a set of SASS map properties
+ * @params
+ *  {Map} $map - SCSS map
+ *
+ * Usage example
+ *
+  &.button-size {
+    @include mixins.variants-sizes-button-generator($variants-config);
+  }
+ *
+**/
+@mixin sizes-button-generator ($map) {
+  @each $iKey, $iValue in $map {
+    &-#{$iKey} {
+      @if type-of($iValue) == 'map' {
+        @each $jKey, $jValue in $iValue {
+          @if $jKey == _sizes {
+            @each $kKey, $kValue in $jValue {
+              &-#{$kKey} {
+                @each $lKey, $lValue in $kValue {
+                  @if type-of($lValue) != 'map' {
+                    .button-content {
+                      #{$lKey}: $lValue;
+                    }
+                  } @else {
+                    #{map.get($lValue, selector)} {
+                      @each $mKey, $mValue in map.get($lValue, properties) {
+                        #{$mKey}: $mValue;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+ * generator - Automates inverted variants creation by generating component utility classes from a set of SASS map properties
+ * @params
+ *  {Map} $map - SCSS map
+ *
+ * Usage example
+ *
+  &.button-inverted {
+    @include mixins.variants-inverted-button-generator($variants-config);
+  }
+ *
+**/
+@mixin inverted-button-generator ($map) {
+  @each $iKey, $iValue in $map {
+    &-#{$iKey} {
+      @if type-of($iValue) == 'map' {
+        @each $jKey, $jValue in $iValue {
+          @if $jKey == _inverted {
+            @each $kKey, $kValue in $jValue {
+              @if $kKey == _shared {
+                @each $lKey, $lValue in $kValue {
+                  @if type-of($lValue) != 'map' {
+                    .button-content {
+                      #{$lKey}: $lValue;
+                    }
+                  }
+                }
+              } @else {
+                @each $lKey, $lValue in $kValue {
+                  @if type-of($lValue) == 'map' {
+                    @each $mKey, $mValue in $lValue {
+                      &.button-color-#{$kKey} {
+                        @each $nKey, $nValue in $mValue {
+                          .button-content:#{$mKey} {
+                            #{$nKey}: $nValue;
+                          }
+                        }
+                      }
+                    }
+                  } @else {
+                    &.button-color-#{$kKey} {
+                      .button-content {
+                        #{$lKey}: $lValue;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin test ($map, $types, $colors, $states, $exceptions, $hasType: false, $hasColor: false, $hasState: false, $selector: '') {
+  @each $key, $value in $map {
+    @if type-of($value) == 'map' {
+      @if list.index($types, $key) != null {
+        @if list.index($types, $key) > -1 and $hasType == false {
+          $selector: #{$key};
+          $hasType: true
+        }
+      }
+      @if list.index($colors, $key) != null {
+        @if list.index($colors, $key) > -1 and $hasColor == false {
+          $selector: #{$selector + unquote('.button-color-#{$key}')};
+          $hasColor: true
+        }
+      }
+      @if list.index($states, $key) != null {
+        @if list.index($states, $key) > -1 and $hasState == false {
+          $selector: #{$selector + unquote(' .button-content:#{$key}')};
+          $hasState: true
+        }
+      }
+
+      @debug $key;
+      @debug $value;
+      @debug $selector;
+      @debug '---';
+
+      @include test($value, $types, $colors, $states, $exceptions, $hasType, $hasColor, $hasState, $selector);
+    } @else {
+      @if $hasState {
+        &-#{$selector} {
+          #{$key}: $value;
+        }
+      } @else {
+        &-#{$selector} {
+          .button-content {
+            #{$key}: $value;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+$z-index: 1000;
+
+ui-kit-overlay, .overlay-wrapper {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  pointer-events: none;
+  z-index: $z-index;
+}
+
+.overlay-container {
+  pointer-events: auto;
+  max-width: 100%;
+  max-height: 100%;
+  z-index: $z-index;
+}

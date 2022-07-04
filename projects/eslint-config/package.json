@@ -1,0 +1,23 @@
+{
+  "name": "@ngx-chrono-ui-kit/eslint-config",
+  "version": "0.0.24",
+  "main": "index.js",
+  "files": [
+    ".eslintignore"
+  ],
+  "peerDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-google": "^0.14.0",
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-google": "^0.14.0",
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0"
+  },
+  "publishConfig": {
+    "registry": "https://pkgs.dev.azure.com/projetsrtm/7fa9506a-027e-4309-8662-a77197956248/_packaging/Chrono_UI_Kit/npm/registry/"
+  }
+}

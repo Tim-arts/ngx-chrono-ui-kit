@@ -1,0 +1,8 @@
+@use 'sass:map';
+
+@use '../../abstracts/variables' as variables;
+@use '../../abstracts/mixins' as mixins;
+
+.mat-tooltip {
+  font-size: 12px;
+}

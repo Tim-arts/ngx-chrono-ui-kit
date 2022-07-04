@@ -1,0 +1,60 @@
+:host {
+    display: grid;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        " ui-manoeuvre "
+    ;
+    padding: 0;
+    margin: 0;
+}
+
+.ui-kit-manoeuvre {
+    grid-area: ui-manoeuvre;
+    display: grid;
+    height: auto;
+    grid-column-gap: 1rem;
+    align-content: center;
+    grid-template-columns: 3rem 2rem 1fr auto;
+    grid-template-areas:
+        " man-icon turn man-text  man-action"
+    ;
+}
+
+.man-icon {
+    grid-area: man-icon;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.turn {
+    grid-area: turn;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.man-text {
+    grid-area: man-text;
+    display: grid;
+    width: 100%;
+    align-content: center;
+}
+
+.man-action {
+    grid-area: man-action;
+    display: grid;
+    width: 100%;
+    justify-content: right;
+    align-content: center;
+}
+
+.ui-kit-manoeuvre > .arret {
+    color: #e2543a;
+  }
+  .ui-kit-manoeuvre .turn {
+    color: #e2543a;
+  }

@@ -1,0 +1,241 @@
+@use 'sass:map';
+// Color palettes from the Material Design spec.
+// See https://material.io/design/color/
+//
+// Contrast colors are hard-coded because it is too difficult (probably impossible) to
+// calculate them. These contrast colors are pulled from the public Material Design spec swatches.
+// While the contrast colors in the spec are not prescriptive, we use them for convenience.
+
+
+// @deprecated renamed to $dark-primary-text.
+// @breaking-change 8.0.0
+$black-87-opacity: rgba(black, 0.87);
+// @deprecated renamed to $light-primary-text.
+// @breaking-change 8.0.0
+$white-87-opacity: rgba(white, 0.87);
+// @deprecated use $dark-[secondary-text,disabled-text,dividers,focused] instead.
+// @breaking-change 8.0.0
+$black-12-opacity: rgba(black, 0.12);
+// @deprecated use $light-[secondary-text,disabled-text,dividers,focused] instead.
+// @breaking-change 8.0.0
+$white-12-opacity: rgba(white, 0.12);
+// @deprecated use $dark-[secondary-text,disabled-text,dividers,focused] instead.
+// @breaking-change 8.0.0
+$black-6-opacity: rgba(black, 0.06);
+// @deprecated use $light-[secondary-text,disabled-text,dividers,focused] instead.
+// @breaking-change 8.0.0
+$white-6-opacity: rgba(white, 0.06);
+
+$dark-primary-text: rgba(black, 0.87);
+$dark-secondary-text: rgba(black, 0.54);
+$dark-disabled-text: rgba(black, 0.38);
+$dark-dividers: rgba(black, 0.12);
+$dark-focused: rgba(black, 0.12);
+$light-primary-text: white;
+$light-secondary-text: rgba(white, 0.7);
+$light-disabled-text: rgba(white, 0.5);
+$light-dividers: rgba(white, 0.12);
+$light-focused: rgba(white, 0.12);
+
+$primary: (
+  50 : #e1f1ff,
+  100 : #b8dcff,
+  200 : #87c7ff,
+  300 : #4ab1ff,
+  400 : #008dff,
+  500 : #036bfc,
+  600 : #1a58e9,
+  700 : #2932c9,
+  800 : #2128a1,
+  900 : #191e79,
+  A100 : #ffffff,
+  A200 : #edf0ff,
+  A400 : #bac6ff,
+  A700 : #a1b1ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$accent: (
+  50 : #f0e5ff,
+  100 : #dbbdff,
+  200 : #c391ff,
+  300 : #aa65ff,
+  400 : #9844ff,
+  500 : #8623ff,
+  600 : #7e1fff,
+  700 : #731aff,
+  800 : #6915ff,
+  900 : #560cff,
+  A100 : #ffffff,
+  A200 : #f8f6ff,
+  A400 : #d2c3ff,
+  A700 : #c0a9ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$tertiary: (
+  50 : #e0fcff,
+  100 : #b3f9ff,
+  200 : #80f5ff,
+  300 : #4df0fe,
+  400 : #26edfe,
+  500 : #00eafe,
+  600 : #00e7fe,
+  700 : #00e4fe,
+  800 : #00e1fe,
+  900 : #00dbfd,
+  A100 : #ffffff,
+  A200 : #f1fdff,
+  A400 : #bef5ff,
+  A700 : #a4f1ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$warn: (
+  50 : #fbe7e3,
+  100 : #f8d7d1,
+  200 : #f1afa2,
+  300 : #e7725d,
+  400 : #e2543a,
+  500 : #dd3617,
+  600 : #c4260d,
+  700 : #b12b12,
+  800 : #9b2610,
+  900 : #85200e,
+  A100 : #fff1f1,
+  A200 : #ffc1be,
+  A400 : #ff908b,
+  A700 : #ff7871,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$grey-palette: (
+  50: #FAFBFF,
+  100: #F3F4F4,
+  200: #EDEFF5,
+  300: #E6E8F0,
+  400: #D8DAE5,
+  500: #C1C4D6,
+  600: #8F95B2,
+  700: #696F8C,
+  800: #474D66,
+  900: #101840,
+  A100: #ffffff,
+  A200: #eeeeee,
+  A400: #bdbdbd,
+  A700: #616161,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+// Background palette for light themes.
+$light-theme-background-palette: (
+  status-bar: map.get($grey-palette, 300),
+  app-bar:    map.get($grey-palette, 100),
+  background: map.get($grey-palette, 50),
+  hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+  card:       white,
+  dialog:     white,
+  disabled-button: rgba(black, 0.12),
+  raised-button: white,
+  focused-button: $dark-focused,
+  selected-button: map.get($grey-palette, 300),
+  selected-disabled-button: map.get($grey-palette, 400),
+  disabled-button-toggle: map.get($grey-palette, 200),
+  unselected-chip: map.get($grey-palette, 300),
+  disabled-list-option: map.get($grey-palette, 200),
+  tooltip: map.get($grey-palette, 700),
+);
+
+// Foreground palette for light themes.
+$light-theme-foreground-palette: (
+  base:              black,
+  divider:           $dark-dividers,
+  dividers:          $dark-dividers,
+  disabled:          $dark-disabled-text,
+  disabled-button:   rgba(black, 0.26),
+  disabled-text:     $dark-disabled-text,
+  elevation:         black,
+  hint-text:         $dark-disabled-text,
+  secondary-text:    $dark-secondary-text,
+  icon:              rgba(black, 0.54),
+  icons:             rgba(black, 0.54),
+  text:              rgba(black, 0.87),
+  slider-min:        rgba(black, 0.87),
+  slider-off:        rgba(black, 0.26),
+  slider-off-active: rgba(black, 0.38),
+);

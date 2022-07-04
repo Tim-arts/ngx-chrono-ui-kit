@@ -1,0 +1,13 @@
+<div class='toast-wrapper'>
+  <ui-kit-alert
+    *ngFor='let toast of toasts'
+    [classes]='$any(toast?.classes)'
+    [content]='$any(toast?.content)'
+    [id]='$any(toast?.id)'
+    [title]='toast!.title'
+    [type]='$any(toast?.type)'
+    [toastOptions]='$any(toast?.toastOptions)'
+    [status]='$any(toast?.status)'
+    (onDestroy)='destroyToast($event)'
+    ></ui-kit-alert>
+</div>

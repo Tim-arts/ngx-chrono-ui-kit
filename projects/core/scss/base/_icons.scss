@@ -1,0 +1,6 @@
+@use '../abstracts/variables' as variables;
+@use '../abstracts/mixins' as mixins;
+
+mat-icon.mat-icon {
+  @include mixins.shared-generator-multiple-values(variables.$icon-sizes, 'font-size', 'width', 'height');
+}

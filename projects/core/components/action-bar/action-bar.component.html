@@ -1,0 +1,25 @@
+<div
+  class="action-bar-container d-flex align-items-center {{
+    direction ? 'action-bar-' + direction : ''
+  }}"
+  [ngClass]="{ draggable: draggable, fragmented: fragmented }"
+  cdkDrag
+  [cdkDragDisabled]="!draggable"
+  [cdkDragBoundary]="draggableBoundary"
+>
+  <div class="icon-group d-flex align-items-center" *ngIf="draggable">
+    <ui-kit-button
+      icon="drag_indicator"
+      [type]="state!.type"
+      [size]="state!.size"
+      [iconPosition]="state!.iconPosition"
+      [inverted]="state!.inverted"
+      class="dragging-handle"
+      cdkDragHandle
+      aria-hidden="false"
+      aria-label="Drag icon"
+      (click)="$event.stopPropagation()"
+    ></ui-kit-button>
+  </div>
+  <ng-content></ng-content>
+</div>

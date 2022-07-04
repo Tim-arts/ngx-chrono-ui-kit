@@ -1,0 +1,7 @@
+<mat-selection-list class="ui-kit-manoeuvre-trajet">
+    <mat-list-option class="view" *ngFor="let manoeuvre of manoeuvres; let i=index">
+        <ui-kit-manoeuvre [manItem]="manoeuvre"></ui-kit-manoeuvre>
+        <mat-divider></mat-divider>
+    </mat-list-option>
+  </mat-selection-list>
+<section *ngIf="!manoeuvres || manoeuvres.length === 0" class="liste-vide">La liste est vide</section>

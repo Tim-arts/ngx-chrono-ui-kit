@@ -1,0 +1,35 @@
+{
+  "name": "@ngx-chrono-ui-kit/core",
+  "version": "1.7.3",
+  "scripts": {
+    "test": "ng test",
+    "build": "ng build core"
+  },
+  "browserslist": [
+    "> 2%"
+  ],
+  "peerDependencies": {
+    "@angular/animations": "^12.2.0",
+    "@angular/cdk": "^12.2.0",
+    "@angular/common": "^12.2.0",
+    "@angular/core": "^12.2.0",
+    "@angular/forms": "^12.2.0",
+    "@angular/material": "^12.2.0",
+    "tailwindcss": "^2.2.19"
+  },
+  "dependencies": {
+    "tslib": "^2.3.1"
+  },
+  "devDependencies": {
+    "@angular/animations": "^12.2.0",
+    "@angular/cdk": "^12.2.0",
+    "@angular/common": "^12.2.0",
+    "@angular/core": "^12.2.0",
+    "@angular/forms": "^12.2.0",
+    "@angular/material": "^12.2.0",
+    "tailwindcss": "^2.2.19"
+  },
+  "publishConfig": {
+    "registry": "https://pkgs.dev.azure.com/projetsrtm/7fa9506a-027e-4309-8662-a77197956248/_packaging/Chrono_UI_Kit/npm/registry/"
+  }
+}

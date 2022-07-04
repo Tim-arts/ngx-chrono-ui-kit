@@ -1,0 +1,25 @@
+//@import '_colors-light.scss' screen;
+//@import '_colors-dark.scss' screen and (prefers-color-scheme: dark);
+
+@forward 'colors-light' show
+  $md3-primary,
+  $md3-secondary,
+  $md3-tertiary,
+  $md3-neutral,
+  $md3-neutral-variant,
+  $md3-error,
+  $md3-success,
+  $md3-information,
+  $md3-warning,
+
+  $surface,
+  $outline,
+
+  $default,
+  $primary,
+  $secondary,
+  $tertiary,
+  $error,
+  $success,
+  $information,
+  $warning;

@@ -1,0 +1,26 @@
+# Ignore parsing following folders:
+node_modules
+
+# Ignore parsing following files:
+
+**/*.html
+**/*.scss
+**/*.css
+**/*.map
+
+**/*.md
+**/*.mdx
+
+**/*.ico
+**/*.svg
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.gif
+
+**/*.ttf
+**/*.eot
+**/*.woff
+**/*.woff2
+
+**/*.json

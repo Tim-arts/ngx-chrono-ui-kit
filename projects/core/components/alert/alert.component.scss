@@ -1,0 +1,88 @@
+@use 'sass:map';
+
+@use '../../scss/abstracts/variables' as variables;
+@use '../../scss/abstracts/colors' as colors;
+@use '../../scss/abstracts/elevations' as elevations;
+
+$alert-minimal-width: 25rem;
+$alert-maximal-width: 48rem;
+
+ui-kit-alert {
+  width: fit-content;
+  min-width: $alert-minimal-width;
+  max-width: $alert-maximal-width;
+  color: map.get(colors.$md3-neutral, 40);
+  background-color: map.get(colors.$md3-neutral, 90);
+  box-shadow: unquote(map.get(elevations.$neutral, 06));
+  padding: map.get(variables.$spacings, 16);
+  border-radius: map.get(variables.$border-radius, 16);
+  margin-bottom: map.get(variables.$spacings, 8);
+
+  &.type-inline {
+    min-width: inherit;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    padding: map.get(variables.$spacings, 08);
+
+    .alert-icon {
+      margin-right: map.get(variables.$spacings, 08);
+    }
+  }
+
+  &.status-error {
+    background-color: map.get(colors.$md3-error, 90);
+    box-shadow: unquote(map.get(elevations.$error, 06));
+
+    mat-icon, [class*='text-title'] {
+      color: map.get(colors.$md3-error, 40);
+    }
+  }
+
+  &.status-success {
+    background-color: map.get(colors.$md3-success, 95);
+    box-shadow: unquote(map.get(elevations.$success, 06));
+
+    mat-icon, [class*='text-title'] {
+      color: map.get(colors.$md3-success, 40);
+    }
+  }
+
+  &.status-warning {
+    background-color: map.get(colors.$md3-warning, 90);
+    box-shadow: unquote(map.get(elevations.$warning, 06));
+
+    mat-icon, [class*='text-title'] {
+      color: map.get(colors.$md3-warning, 40);
+    }
+  }
+
+  &.status-information {
+    background-color: map.get(colors.$md3-information, 90);
+    box-shadow: unquote(map.get(elevations.$information, 06));
+
+    mat-icon, [class*='text-title'] {
+      color: map.get(colors.$md3-information, 40);
+    }
+  }
+
+  .alert-icon {
+    margin-right: map.get(variables.$spacings, 16);
+
+    mat-icon {
+      top: 3px;
+    }
+  }
+
+  .alert-content {
+    margin-top: map.get(variables.$spacings, 08);
+    padding-left: map.get(variables.$spacings, 32);
+
+    p {
+      margin-bottom: 0;
+
+      + [class~='alert-header'] {
+        margin-bottom: map.get(variables.$spacings, 08);
+      }
+    }
+  }
+}

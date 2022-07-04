@@ -1,0 +1,101 @@
+@use '../functions' as functions;
+
+/*
+ * properties-generator - Automates classes generation from a set of SASS map properties
+ * @params
+ *  {Map} $map - SASS map
+ *
+ * Usage example
+ *
+  h1 {
+    @include mixins.shared-simple-properties-generator(typography.$headline1);
+  }
+ *
+**/
+@mixin simple-properties-generator ($map) {
+  @each $key, $value in $map {
+    #{$key}: $value;
+  }
+}
+
+/*
+ * generator - Automates style creation to generate utility classes depending on the $attribute parameter
+ * @params
+ *  {Map} $map - SCSS map
+ *  {String} $attribute - CSS property to generate
+ *  {String} $prefix - Symbol to add to the generated class (i.e: .text--small)
+ *  {String} $separator - add a namespace to the generated class (i.e: .text-grey:light)
+ *
+ * Usage example
+ *
+  .mat-icon {
+    @include mixins.shared-generator(variables.$icon-sizes, 'font-size');
+  }
+ *
+**/
+@mixin generator-single-value ($map, $attribute, $prefix: '-', $separator: '-') {
+  @each $key, $value in $map {
+    &#{if($prefix, #{$prefix}#{$key}, #{$key})} {
+      @if type-of($value) == 'map' {
+        @include generator-single-value($value, $attribute, $separator);
+      } @else {
+        #{$attribute}: $value;
+      }
+    }
+  }
+}
+
+/*
+ * generator - Automates style creation to generate utility classes depending on the $attributes parameter
+ * @params
+ *  {Map} $map - SCSS map
+ *  {String} $attribute - CSS property to generate
+ *  {Array of string} $attributes - CSS properties to generate
+ *
+ * Usage example
+ *
+  .mat-icon.mat-icon {
+    @include mixins.shared-generator-multiple-values(variables.$icon-sizes, 'font-size', 'width', 'height');
+  }
+ *
+**/
+@mixin generator-multiple-values ($map, $attributes...) {
+  @each $key, $value in $map {
+    &-#{$key} {
+      @for $i from 1 through length($attributes) {
+        #{nth($attributes, $i)}: $value;
+      }
+    }
+  }
+}
+
+/*
+ * properties-generator - Automates classes generation from a set of SASS map properties
+ * @params
+ *  {Map} $map - SASS map
+ *  {String} $name - generated classes namespace
+ *  {String} $separator - Separator (i.e: .text--small)
+ *
+ * Usage example
+ *
+  .text {
+    @include mixins.shared-properties-generator(typography.$display, display);
+  }
+ *
+**/
+@mixin properties-generator ($map, $name: '', $separator: '-') {
+  $level: 1;
+
+  &#{if($level == 1 and functions.shared-map-depth($map) == 1, if($name and $name != '', #{$separator}#{$name}, ''), '')} {
+    @each $key, $value in $map {
+      @if type-of($value) == 'map' {
+        &#{if($name, #{$separator}#{$name}#{$separator}#{$key}, #{$separator}#{$key})} {
+          $level: $level + 1;
+          @include properties-generator($value);
+        }
+      } @else {
+        #{$key}: $value;
+      }
+    }
+  }
+}

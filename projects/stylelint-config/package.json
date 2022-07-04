@@ -1,0 +1,20 @@
+{
+  "name": "@ngx-chrono-ui-kit/stylelint-config",
+  "version": "0.0.4",
+  "main": "index.js",
+  "peerDependencies": {
+    "stylelint": "^14.5.3",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-config-prettier-scss": "^0.0.1"
+  },
+  "devDependencies": {
+    "stylelint": "^14.5.3",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-config-prettier-scss": "^0.0.1"
+  },
+  "publishConfig": {
+    "registry": "https://pkgs.dev.azure.com/projetsrtm/7fa9506a-027e-4309-8662-a77197956248/_packaging/Chrono_UI_Kit/npm/registry/"
+  }
+}

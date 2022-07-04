@@ -1,0 +1,35 @@
+<div class="time-picker-container d-inline-block" (click)="$event.stopPropagation(); $event.preventDefault();">
+  <div class="d-flex" [ngClass]="{'d-none': !isInHoursMinuteMode}">
+    <div class="d-flex flex-direction-column align-items-center">
+      <ui-kit-button class="increments-hours" icon="expand_less" type="text" size="mini" color="primary" (click)="incrementHours()"></ui-kit-button>
+      <div class="input-container d-flex my-8 position-relative">
+        <input class="text-align-center color-primary text-headline2 p-16" type="number" superchargingInputNumber (onWheel)="wheelUpdateHours($event)"
+               (keydown)="keyDownUpdateHours($event)" (ngModelChange)="updateHours($event)" [ngModel]="hours | number: '2.0'" min="0" max="23" />
+        <ui-kit-button class="action-display-hours position-absolute" icon="apps" type="text" size="mini" (click)="showHoursView()"></ui-kit-button>
+      </div>
+      <ui-kit-button class="decrementHours" icon="expand_more" type="text" size="mini" color="primary" (click)="decrementHours()"></ui-kit-button>
+    </div>
+    <span class="d-inline-flex align-items-center color-primary text-display2 px-4 pb-8">:</span>
+    <div class="d-flex flex-direction-column align-items-center">
+      <ui-kit-button class="increments-minutes" icon="expand_less" type="text" size="mini" color="primary" (click)="incrementMinutes()"></ui-kit-button>
+      <div class="input-container d-flex my-8 position-relative">
+        <input class="text-align-center color-primary text-headline2 p-16" type="number" superchargingInputNumber (onWheel)="wheelUpdateMinutes($event)"
+               (keydown)="keyDownUpdateMinutes($event)" (ngModelChange)="updateMinutes($event)" [ngModel]="minutes | number: '2.0'" min="0" max="59" />
+        <ui-kit-button class="action-display-minutes position-absolute" icon="apps" type="text" size="mini" (click)="showMinutesView()"></ui-kit-button>
+      </div>
+      <ui-kit-button class="decrementMinutes" icon="expand_more" type="text" size="mini" color="primary" (click)="decrementMinutes()"></ui-kit-button>
+    </div>
+  </div>
+  <div class="hours-container d-flex flex-wrap align-items-center" [ngClass]="{'d-none': !isInHoursMode}">
+    <ui-kit-button class="px-1 m-4" icon="chevron_left" type="text" size="mini" (click)="showDefaultView()"></ui-kit-button>
+    <button class="d-inline-flex align-items-center justify-content-center cursor-pointer m-4" *ngFor="let i of generateHours()" (click)="setHours(i)">
+      {{ i | number: '2.0' }}
+    </button>
+  </div>
+  <div class="minutes-container d-flex flex-wrap align-items-center" [ngClass]="{'d-none': !isInMinutesMode}">
+    <ui-kit-button class="px-1 m-4" icon="chevron_left" type="text" size="mini" (click)="showDefaultView()"></ui-kit-button>
+    <button class="d-inline-flex align-items-center justify-content-center cursor-pointer m-4" *ngFor="let j of generateMinutes()" (click)="setMinutes(j)">
+      {{ j | number: '2.0' }}
+    </button>
+  </div>
+</div>

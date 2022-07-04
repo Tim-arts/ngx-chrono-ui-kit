@@ -1,0 +1,9 @@
+@use 'sass:map';
+
+@use '../../../scss/abstracts/variables' as variables;
+
+ui-kit-toast-container {
+  .toast-wrapper {
+    margin: map.get(variables.$spacings, 24);
+  }
+}

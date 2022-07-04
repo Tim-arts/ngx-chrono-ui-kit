@@ -1,0 +1,17 @@
+<div class="time-picker-container d-inline-block" (click)="$event.stopPropagation(); $event.preventDefault();">
+  <ui-kit-time-picker-separated
+    (onUpdate)="update($event, 'start')"
+    [allowsNullValue]="allowsNullValue"
+    [setDefaultValue]="setDefaultValue"
+    [time]="startTime"
+    [value]="startValue">
+  </ui-kit-time-picker-separated>
+  <hr />
+  <ui-kit-time-picker-separated
+    (onUpdate)="update($event, 'end')"
+    [allowsNullValue]="allowsNullValue"
+    [setDefaultValue]="setDefaultValue"
+    [time]="endTime"
+    [value]="endValue">
+  </ui-kit-time-picker-separated>
+</div>

@@ -1,0 +1,19 @@
+<mat-form-field appearance="fill">
+  <mat-label>Entrez l'heure</mat-label>
+  <input type="text" matInput [(ngModel)]="value" placeholder="HH:MM" />
+  <button [hidden]="!value || value === '00:00'" matSuffix mat-icon-button aria-label="Clear" (click)="resetValues()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-datepicker-toggle matSuffix [matMenuTriggerFor]="menu">
+    <mat-icon matDatepickerToggleIcon>schedule</mat-icon>
+  </mat-datepicker-toggle>
+  <mat-menu #menu="matMenu" xPosition="before">
+    <ui-kit-time-picker-separated
+      (onUpdate)="update($event)"
+      [allowsNullValue]="allowsNullValue"
+      [setDefaultValue]="setDefaultValue"
+      [time]="time"
+      [value]="value"
+    ></ui-kit-time-picker-separated>
+  </mat-menu>
+</mat-form-field>

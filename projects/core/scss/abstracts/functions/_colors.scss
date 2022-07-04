@@ -1,0 +1,24 @@
+/*
+ * blending - Blends two colors, the first one has to be solid while the second one has to be transparentized
+ * @params
+ *  {Color} $background - Solid color
+ *  {Color} $color - Transparentized color
+ *
+**/
+@function blending ($background, $color) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+
+  @return $solid-color;
+}
+
+/*
+ * convertHEXToRGB - Convert an hexadecimal color into an RGB one
+ * @params
+ *  {Color} $background - Solid color
+ *
+**/
+@function convertHEXToRGB ($color) {
+  @return red($color) + ", " + green($color) + ", " + blue($color);
+}

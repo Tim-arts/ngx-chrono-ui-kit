@@ -1,0 +1,27 @@
+<mat-form-field appearance="fill">
+  <mat-label>Entrez l'heure</mat-label>
+  <mat-date-range-input [formGroup]="timeRange">
+    <input type="text" matStartDate (dateChange)="dateChange($event, 'start')" formControlName="start"
+           [errorStateMatcher]="errorStateMatcherStartValue" placeholder="Start time" #startValueElement>
+    <input type="text" matEndDate (dateChange)="dateChange($event, 'end')" formControlName="end"
+           [errorStateMatcher]="errorStateMatcherEndValue" placeholder="End time" #endValueElement>
+  </mat-date-range-input>
+  <button matSuffix [hidden]="isClearButtonHidden()"
+          mat-icon-button aria-label="Clear" (click)="resetValues()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-datepicker-toggle matSuffix [matMenuTriggerFor]="menu">
+    <mat-icon matDatepickerToggleIcon>schedule</mat-icon>
+  </mat-datepicker-toggle>
+  <mat-menu #menu="matMenu" xPosition="before">
+    <ui-kit-time-range-picker-separated
+      (onUpdate)="update($event)"
+      [allowsNullValue]="allowsNullValue"
+      [setDefaultValue]="setDefaultValue"
+      [startTime]="startTime"
+      [endTime]="endTime"
+      [startValue]="startValue"
+      [endValue]="endValue"
+    ></ui-kit-time-range-picker-separated>
+  </mat-menu>
+</mat-form-field>

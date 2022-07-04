@@ -1,0 +1,840 @@
+@use 'sass:map';
+
+@use '../../scss/abstracts/variables' as variables;
+@use '../../scss/abstracts/colors' as colors;
+@use '../../scss/abstracts/elevations' as elevations;
+@use '../../scss/abstracts/typography' as typography;
+@use '../../scss/abstracts/mixins' as mixins;
+@use '../../scss/abstracts/functions' as functions;
+
+$types: elevated, filled, filled-tonal, outlined, text, fab, extended-fab;
+$colors: default, primary, secondary, tertiary, error, success, information, warning;
+$states: hover, focus-visible, active;
+$exceptions: _shared, _inverted, \:states;
+
+$variants-config: (
+  elevated: (
+    _shared: (
+      background-color: functions.shared-map-deep-get(colors.$surface, sys, surface),
+      box-shadow: unquote(map.get(elevations.$neutral, 01)),
+      \:states: (
+        hover: (
+          box-shadow: unquote(map.get(elevations.$neutral, 02))
+        )
+      )
+    ),
+    default: (
+      color: functions.shared-map-deep-get(colors.$default, sys, default),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, elevated, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, elevated, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, elevated, pressed)
+        )
+      )
+    ),
+    primary: (
+      color: functions.shared-map-deep-get(colors.$primary, sys, primary),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, elevated, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, elevated, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, elevated, pressed)
+        )
+      )
+    ),
+    secondary: (
+      color: functions.shared-map-deep-get(colors.$secondary, sys, secondary),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, elevated, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, elevated, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, elevated, pressed)
+        )
+      )
+    ),
+    tertiary: (
+      color: functions.shared-map-deep-get(colors.$tertiary, sys, tertiary),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, elevated, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, elevated, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, elevated, pressed)
+        )
+      )
+    )
+  ),
+  filled: (
+    default: (
+      background-color: functions.shared-map-deep-get(colors.$default, sys, default),
+      color: functions.shared-map-deep-get(colors.$default, sys, on-default),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, filled, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, filled, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, filled, pressed)
+        )
+      )
+    ),
+    primary: (
+      background-color: functions.shared-map-deep-get(colors.$primary, sys, primary),
+      color: functions.shared-map-deep-get(colors.$primary, sys, on-primary),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, filled, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, filled, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, filled, pressed)
+        )
+      )
+    ),
+    secondary: (
+      background-color: functions.shared-map-deep-get(colors.$secondary, sys, secondary),
+      color: functions.shared-map-deep-get(colors.$secondary, sys, on-secondary),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, filled, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, filled, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, filled, pressed)
+        )
+      )
+    ),
+    tertiary: (
+      background-color: functions.shared-map-deep-get(colors.$tertiary, sys, tertiary),
+      color: functions.shared-map-deep-get(colors.$tertiary, sys, on-tertiary),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, filled, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, filled, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, filled, pressed)
+        )
+      )
+    )
+  ),
+  filled-tonal: (
+    default: (
+      background-color: functions.shared-map-deep-get(colors.$default, sys, default-container),
+      color: functions.shared-map-deep-get(colors.$default, sys, on-default-container),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, filled-tonal, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, filled-tonal, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, filled-tonal, pressed)
+        )
+      )
+    ),
+    primary: (
+      background-color: functions.shared-map-deep-get(colors.$primary, sys, primary-container),
+      color: functions.shared-map-deep-get(colors.$primary, sys, on-primary-container),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, filled-tonal, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, filled-tonal, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, filled-tonal, pressed)
+        )
+      )
+    ),
+    secondary: (
+      background-color: functions.shared-map-deep-get(colors.$secondary, sys, secondary-container),
+      color: functions.shared-map-deep-get(colors.$secondary, sys, on-secondary-container),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, filled-tonal, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, filled-tonal, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, filled-tonal, pressed)
+        )
+      )
+    ),
+    tertiary: (
+      background-color: functions.shared-map-deep-get(colors.$tertiary, sys, tertiary-container),
+      color: functions.shared-map-deep-get(colors.$tertiary, sys, on-tertiary-container),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, filled-tonal, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, filled-tonal, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, filled-tonal, pressed)
+        )
+      )
+    )
+  ),
+  outlined: (
+    _sizes: (
+      regular: (
+        min-width: 4.8rem,
+      ),
+    ),
+    _shared: (
+      background-color: transparent,
+      border: 1px solid colors.$outline,
+      \:states: (
+        disabled: (
+          border-color: transparent
+        )
+      )
+    ),
+    default: (
+      color: functions.shared-map-deep-get(colors.$default, sys, default),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, outlined, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, outlined, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, outlined, pressed)
+        )
+      )
+    ),
+    primary: (
+      color: functions.shared-map-deep-get(colors.$primary, sys, primary),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, outlined, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, outlined, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, outlined, pressed)
+        )
+      )
+    ),
+    secondary: (
+      color: functions.shared-map-deep-get(colors.$secondary, sys, secondary),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, outlined, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, outlined, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, outlined, pressed)
+        )
+      )
+    ),
+    tertiary: (
+      color: functions.shared-map-deep-get(colors.$tertiary, sys, tertiary),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, outlined, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, outlined, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, outlined, pressed)
+        )
+      )
+    )
+  ),
+  text: (
+    _sizes: (
+      mini: (
+        min-width: 3rem,
+        width: 3rem,
+        height: 3rem,
+        padding: .4rem,
+        line-height: 1.3rem
+      ),
+      regular: (
+        min-width: 4.8rem,
+        padding: 1.1rem 1.5rem
+      ),
+      large: (
+        min-width: 4.8rem,
+        padding: 1.1rem 1.5rem
+      )
+    ),
+    _shared: (
+      background-color: transparent,
+      \:states: (
+        disabled: (
+          background-color: transparent
+        )
+      )
+    ),
+    default: (
+      color: functions.shared-map-deep-get(colors.$default, sys, default),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, text, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, text, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, text, pressed)
+        )
+      )
+    ),
+    primary: (
+      color: functions.shared-map-deep-get(colors.$primary, sys, primary),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, text, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, text, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, text, pressed)
+        )
+      )
+    ),
+    secondary: (
+      color: functions.shared-map-deep-get(colors.$secondary, sys, secondary),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, text, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, text, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, text, pressed)
+        )
+      )
+    ),
+    tertiary: (
+      color: functions.shared-map-deep-get(colors.$tertiary, sys, tertiary),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, text, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, text, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, text, pressed)
+        )
+      )
+    )
+  ),
+  fab: (
+    _shared: (
+      box-shadow: unquote(map.get(elevations.$neutral, 01)),
+    ),
+    _sizes: (
+      mini: (
+        min-width: 4rem,
+        height: 4rem,
+        padding: .8rem,
+        border-radius: map.get(variables.$border-radius, 12)
+      ),
+      regular: (
+        min-width: 5.6rem,
+        height: 5.6rem,
+        padding: 1.6rem,
+        border-radius: map.get(variables.$border-radius, 16)
+      ),
+      large: (
+        width: 9.6rem,
+        height: 9.6rem,
+        padding: 3rem,
+        border-radius: map.get(variables.$border-radius, 28),
+        //_children: (
+        //  (
+        //    selector: mat-icon,
+        //    properties: (
+        //      font-size: map.get(variables.$icon-sizes, large),
+        //      width: map.get(variables.$icon-sizes, large),
+        //      height: map.get(variables.$icon-sizes, large)
+        //    )
+        //  )
+        //)
+      )
+    ),
+    default: (
+      background-color: functions.shared-map-deep-get(colors.$default, sys, default-container),
+      color: functions.shared-map-deep-get(colors.$default, sys, on-default-container),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, fab, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, fab, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, fab, pressed)
+        )
+      )
+    ),
+    primary: (
+      background-color: functions.shared-map-deep-get(colors.$primary, sys, primary-container),
+      color: functions.shared-map-deep-get(colors.$primary, sys, on-primary-container),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, fab, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, fab, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, fab, pressed)
+        )
+      )
+    ),
+    secondary: (
+      background-color: functions.shared-map-deep-get(colors.$secondary, sys, secondary-container),
+      color: functions.shared-map-deep-get(colors.$secondary, sys, on-secondary-container),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, fab, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, fab, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, fab, pressed)
+        )
+      )
+    ),
+    tertiary: (
+      background-color: functions.shared-map-deep-get(colors.$tertiary, sys, tertiary-container),
+      color: functions.shared-map-deep-get(colors.$tertiary, sys, on-tertiary-container),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, fab, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, fab, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, fab, pressed)
+        )
+      )
+    ),
+    _inverted: (
+      default: (
+        background-color: functions.shared-map-deep-get(colors.$surface, sys, surface),
+        color: functions.shared-map-deep-get(colors.$default, sys, default),
+        \:states: (
+          hover: (
+            background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, fab, inverted-hovered)
+          ),
+          focus-visible: (
+            background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, fab, inverted-focused)
+          ),
+          active: (
+            background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, fab, inverted-pressed)
+          )
+        )
+      ),
+      primary: (
+        background-color: functions.shared-map-deep-get(colors.$surface, sys, surface),
+        color: functions.shared-map-deep-get(colors.$primary, sys, primary),
+        \:states: (
+          hover: (
+            background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, fab, inverted-hovered)
+          ),
+          focus-visible: (
+            background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, fab, inverted-focused)
+          ),
+          active: (
+            background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, fab, inverted-pressed)
+          )
+        )
+      ),
+      secondary: (
+        background-color: functions.shared-map-deep-get(colors.$surface, sys, surface),
+        color: functions.shared-map-deep-get(colors.$secondary, sys, secondary),
+        \:states: (
+          hover: (
+            background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, fab, inverted-hovered)
+          ),
+          focus-visible: (
+            background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, fab, inverted-focused)
+          ),
+          active: (
+            background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, fab, inverted-pressed)
+          )
+        )
+      ),
+      tertiary: (
+        background-color: functions.shared-map-deep-get(colors.$surface, sys, surface),
+        color: functions.shared-map-deep-get(colors.$tertiary, sys, tertiary),
+        \:states: (
+          hover: (
+            background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, fab, inverted-hovered)
+          ),
+          focus-visible: (
+            background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, fab, inverted-focused)
+          ),
+          active: (
+            background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, fab, inverted-pressed)
+          )
+        )
+      )
+    )
+  ),
+  extended-fab: (
+    _shared: (
+      min-width: 8rem,
+      height: 5.6rem,
+      box-shadow: unquote(map.get(elevations.$neutral, 01)),
+      border-radius: map.get(variables.$border-radius, 16)
+    ),
+    default: (
+      background-color: functions.shared-map-deep-get(colors.$default, sys, default-container),
+      color: functions.shared-map-deep-get(colors.$default, sys, on-default-container),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, extended-fab, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, extended-fab, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, extended-fab, pressed)
+        )
+      )
+    ),
+    primary: (
+      background-color: functions.shared-map-deep-get(colors.$primary, sys, primary-container),
+      color: functions.shared-map-deep-get(colors.$primary, sys, on-primary-container),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, extended-fab, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, extended-fab, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, extended-fab, pressed)
+        )
+      )
+    ),
+    secondary: (
+      background-color: functions.shared-map-deep-get(colors.$secondary, sys, secondary-container),
+      color: functions.shared-map-deep-get(colors.$secondary, sys, on-secondary-container),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, extended-fab, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, extended-fab, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, extended-fab, pressed)
+        )
+      )
+    ),
+    tertiary: (
+      background-color: functions.shared-map-deep-get(colors.$tertiary, sys, tertiary-container),
+      color: functions.shared-map-deep-get(colors.$tertiary, sys, on-tertiary-container),
+      \:states: (
+        hover: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, extended-fab, hovered)
+        ),
+        focus-visible: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, extended-fab, focused)
+        ),
+        active: (
+          background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, extended-fab, pressed)
+        )
+      )
+    ),
+    _inverted: (
+      default: (
+        background-color: functions.shared-map-deep-get(colors.$surface, sys, surface),
+        color: functions.shared-map-deep-get(colors.$default, sys, default),
+        \:states: (
+          hover: (
+            background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, fab, inverted-hovered)
+          ),
+          focus-visible: (
+            background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, fab, inverted-focused)
+          ),
+          active: (
+            background-color: functions.shared-map-deep-get(colors.$default, sys, \:states, fab, inverted-pressed)
+          )
+        )
+      ),
+      primary: (
+        background-color: functions.shared-map-deep-get(colors.$surface, sys, surface),
+        color: functions.shared-map-deep-get(colors.$primary, sys, primary),
+        \:states: (
+          hover: (
+            background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, fab, inverted-hovered)
+          ),
+          focus-visible: (
+            background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, fab, inverted-focused)
+          ),
+          active: (
+            background-color: functions.shared-map-deep-get(colors.$primary, sys, \:states, fab, inverted-pressed)
+          )
+        )
+      ),
+      secondary: (
+        background-color: functions.shared-map-deep-get(colors.$surface, sys, surface),
+        color: functions.shared-map-deep-get(colors.$secondary, sys, secondary),
+        \:states: (
+          hover: (
+            background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, fab, inverted-hovered)
+          ),
+          focus-visible: (
+            background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, fab, inverted-focused)
+          ),
+          active: (
+            background-color: functions.shared-map-deep-get(colors.$secondary, sys, \:states, fab, inverted-pressed)
+          )
+        )
+      ),
+      tertiary: (
+        background-color: functions.shared-map-deep-get(colors.$surface, sys, surface),
+        color: functions.shared-map-deep-get(colors.$tertiary, sys, tertiary),
+        \:states: (
+          hover: (
+            background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, fab, inverted-hovered)
+          ),
+          focus-visible: (
+            background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, fab, inverted-focused)
+          ),
+          active: (
+            background-color: functions.shared-map-deep-get(colors.$tertiary, sys, \:states, fab, inverted-pressed)
+          )
+        )
+      )
+    )
+  )
+);
+$caret-config: (
+  mini: (
+    size: .3rem,
+    bottom: 6px,
+    right: 6px
+  ),
+  regular: (
+    size: .4rem,
+    bottom: 12px,
+    right: 9px
+  ),
+  large: (
+    size: .6rem,
+    bottom: 16px,
+    right: 16px
+  )
+);
+
+ui-kit-button {
+  width: fit-content;
+
+  *:not(.button-container) {
+    pointer-events: none
+  }
+
+  .button-container {
+    width: fit-content;
+
+    &.button-menu {
+      $caret-size: .3rem;
+
+      &::after {
+        content: "";
+        transform: rotate(135deg);
+        border-left: functions.shared-map-deep-get($caret-config, mini, size) solid transparent;
+        border-right: functions.shared-map-deep-get($caret-config, mini, size) solid transparent;
+        border-bottom: functions.shared-map-deep-get($caret-config, mini, size) solid functions.shared-map-deep-get(colors.$default, sys, default);
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        will-change: border-bottom-color;
+        transition: border-bottom-color .3s ease, color .3s ease;
+        pointer-events: none;
+      }
+
+      &.button-color-primary {
+        &::after {
+          border-bottom-color: functions.shared-map-deep-get(colors.$primary, sys, primary);
+        }
+      }
+
+      &.button-color-secondary {
+        &::after {
+          border-bottom-color: functions.shared-map-deep-get(colors.$secondary, sys, secondary);
+        }
+      }
+
+      &.button-color-tertiary {
+        &::after {
+          border-bottom-color: functions.shared-map-deep-get(colors.$tertiary, sys, tertiary);
+        }
+      }
+
+      &.button-size-fab-mini {
+        &::after {
+          border-left-width: functions.shared-map-deep-get($caret-config, mini, size);
+          border-right-width: functions.shared-map-deep-get($caret-config, mini, size);
+          border-bottom-width: functions.shared-map-deep-get($caret-config, mini, size);
+          bottom: functions.shared-map-deep-get($caret-config, mini, bottom);
+          right: functions.shared-map-deep-get($caret-config, mini, right);
+        }
+      }
+
+      &.button-size-fab-regular {
+        &::after {
+          border-left-width: functions.shared-map-deep-get($caret-config, regular, size);
+          border-right-width: functions.shared-map-deep-get($caret-config, regular, size);
+          border-bottom-width: functions.shared-map-deep-get($caret-config, regular, size);
+          bottom: functions.shared-map-deep-get($caret-config, regular, bottom);
+          right: functions.shared-map-deep-get($caret-config, regular, right);
+        }
+      }
+
+      &.button-size-fab-large {
+        &::after {
+          border-left-width: functions.shared-map-deep-get($caret-config, large, size);
+          border-right-width: functions.shared-map-deep-get($caret-config, large, size);
+          border-bottom-width: functions.shared-map-deep-get($caret-config, large, size);
+          bottom: functions.shared-map-deep-get($caret-config, large, bottom);
+          right: functions.shared-map-deep-get($caret-config, large, right);
+        }
+      }
+    }
+
+    &.button-type {
+      @include mixins.variants-types-button-generator($variants-config);
+    }
+
+    &.button-size {
+      @include mixins.variants-sizes-button-generator($variants-config);
+    }
+
+    &.button-inverted.button-type {
+      @include mixins.variants-inverted-button-generator($variants-config);
+
+      &-fab, &-extended-fab {
+        .button-content:disabled, .button-content:disabled:hover, .button-content:disabled:focus-visible, .button-content:disabled:active {
+          color: functions.shared-map-deep-get(colors.$surface, read-only, on-surface, opacity-0\.38) !important;
+          background-color: functions.shared-map-deep-get(colors.$surface, read-only, on-surface, opacity-0\.12) !important;
+          box-shadow: unquote(map.get(elevations.$neutral, 00)) !important;
+          cursor: default !important;
+          pointer-events: none !important;
+        }
+      }
+    }
+
+    &:not(.button-inverted) {
+      .button-content {
+        &:disabled, &:disabled:hover, &:disabled:focus-visible, &:disabled:active {
+          color: functions.shared-map-deep-get(colors.$surface, read-only, on-surface, opacity-0\.38) !important;
+          cursor: default !important;
+          pointer-events: none !important;
+          box-shadow: unquote(map.get(elevations.$neutral, 00)) !important;
+        }
+      }
+
+      &:not(.button-size-text-mini) {
+        .button-content {
+          &:disabled, &:disabled:hover, &:disabled:focus-visible, &:disabled:active {
+            background-color: functions.shared-map-deep-get(colors.$surface, read-only, on-surface, opacity-0\.12) !important;
+          }
+        }
+      }
+    }
+
+    &.icon-first {
+      .button-content {
+        padding-left: map.get(variables.$spacings, 16)
+      }
+    }
+
+    &.icon-last {
+      .button-content {
+        padding-right: map.get(variables.$spacings, 16)
+      }
+    }
+  }
+
+  .button-content {
+    font-family: 'Manrope', sans-serif;
+    font-size: map.get(typography.$button, font-size);
+    font-weight: map.get(typography.$button, font-weight);
+    letter-spacing: map.get(typography.$button, letter-spacing);
+    width: fit-content;
+    height: 4rem;
+    position: relative;
+    user-select: none;
+    outline: none;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0;
+    padding: map.get(variables.$spacings, 10) map.get(variables.$spacings, 24);
+    border: none;
+    border-radius: map.get(variables.$border-radius, 20);
+    cursor: pointer;
+    will-change: background-color, color, border, box-shadow;
+    transition: background-color .3s ease, color .3s ease, border .3s ease, box-shadow .3s ease;
+    pointer-events: auto;
+    line-height: 1;
+  }
+
+  .order-1 {
+    order: 1
+  }
+
+  .order-2 {
+    order: 2
+  }
+
+  span.order-1 {
+    margin-right: map.get(variables.$spacings, 08)
+  }
+
+  span.order-2 {
+    margin-left: map.get(variables.$spacings, 08)
+  }
+}
+
+// themes, mixins, disabled, states, shared

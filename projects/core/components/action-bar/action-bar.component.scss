@@ -1,0 +1,97 @@
+@use 'sass:map';
+
+@use '../../scss/abstracts/variables' as variables;
+@use '../../scss/abstracts/elevations' as elevations;
+@use '../../scss/abstracts/colors' as colors;
+@use '../../scss/abstracts/mixins' as mixins;
+@use '../../scss/abstracts/functions' as functions;
+
+@use '../../scss/components/common/cdkdraghandle';
+
+$component-height: 5.6rem;
+
+ui-kit-action-bar {
+  .action-bar-container {
+    max-width: fit-content;
+    background-color: functions.shared-map-deep-get(colors.$surface, sys, surface);
+    padding: map.get(variables.$spacings, 08);
+    box-shadow: unquote(map.get(elevations.$neutral, 01));
+    border-radius: map.get(variables.$border-radius, 16);
+
+    &.action-bar {
+      &-horizontal {
+        .icon-group:not(:last-child), .mat-divider {
+          margin-right: map.get(variables.$spacings, 08);
+        }
+
+        .icon-group-container {
+          > ui-kit-button {
+            &:first-child {
+              margin-left: 0;
+            }
+
+            &:last-child {
+              margin-right: 0;
+            }
+
+            margin: map.get(variables.$spacings, 04);
+          }
+        }
+      }
+
+      &-vertical {
+        .icon-group:not(:last-child) {
+          margin-bottom: map.get(variables.$spacings, 08);
+        }
+
+        .icon-group-container {
+          > ui-kit-button {
+            &:first-child {
+              margin-top: 0;
+            }
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            margin: map.get(variables.$spacings, 04);
+          }
+        }
+
+        [cdkDragHandle] mat-icon, .mat-divider {
+          transform: rotate(90deg);
+        }
+      }
+
+      &-horizontal, &-horizontal .icon-group, &-horizontal .icon-group-container {
+        @include mixins.layout-d-flex;
+        @include mixins.layout-flex-direction-row;
+        @include mixins.layout-align-items-center;
+      }
+
+      &-vertical, &-vertical .icon-group, &-vertical .icon-group-container {
+        @include mixins.layout-d-flex;
+        @include mixins.layout-flex-direction-column;
+        @include mixins.layout-align-items-center;
+      }
+    }
+
+    &.fragmented {
+      background-color: transparent;
+      box-shadow: unquote(map.get(elevations.$neutral, 00));
+
+      mat-divider {
+        display: none;
+      }
+    }
+
+    .icon-group-container {
+      @include mixins.layout-d-flex;
+      @include mixins.layout-align-items-center;
+    }
+  }
+
+  .mat-divider {
+    height: calc(#{$component-height} / 3);
+  }
+}

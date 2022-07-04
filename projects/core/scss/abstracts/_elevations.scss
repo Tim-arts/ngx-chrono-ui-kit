@@ -1,0 +1,79 @@
+@use 'sass:map';
+
+@use './colors' as colors;
+@use './functions' as functions;
+
+$neutral-40: functions.colors-convertHEXToRGB(map.get(colors.$md3-neutral, 40));
+$neutral: (
+  00: '0px 0px 0px 0px rgba(#{$neutral-40}, .12), 0px 0px 0px 0px rgba(#{$neutral-40}, .06), 0px 0px 0px 0px rgba(#{$neutral-40}, .06)',
+  01: '0px 2px 1px -1px rgba(#{$neutral-40}, .12), 0px 1px 1px 0px rgba(#{$neutral-40}, .06), 0px 1px 3px 0px rgba(#{$neutral-40}, .06)',
+  02: '0px 3px 1px -2px rgba(#{$neutral-40}, .12), 0px 2px 2px 0px rgba(#{$neutral-40}, .06), 0px 1px 5px 0px rgba(#{$neutral-40}, .06)',
+  03: '0px 3px 3px -2px rgba(#{$neutral-40}, .12), 0px 3px 4px 0px rgba(#{$neutral-40}, .06), 0px 1px 8px 0px rgba(#{$neutral-40}, .06)',
+  04: '0px 2px 4px -1px rgba(#{$neutral-40}, .12), 0px 4px 5px 0px rgba(#{$neutral-40}, .06), 0px 1px 10px 0px rgba(#{$neutral-40}, .06)',
+  06: '0px 3px 5px -1px rgba(#{$neutral-40}, .12), 0px 6px 10px 0px rgba(#{$neutral-40}, .06), 0px 1px 18px 0px rgba(#{$neutral-40}, .06)',
+  08: '0px 5px 5px -3px rgba(#{$neutral-40}, .12), 0px 8px 10px 1px rgba(#{$neutral-40}, .06), 0px 3px 14px 2px rgba(#{$neutral-40}, .06)',
+  09: '0px 5px 6px -3px rgba(#{$neutral-40}, .12), 0px 9px 12px 1px rgba(#{$neutral-40}, .06), 0px 3px 16px 2px rgba(#{$neutral-40}, .06)',
+  12: '0px 7px 8px -4px rgba(#{$neutral-40}, .12), 0px 12px 17px 2px rgba(#{$neutral-40}, .06), 0px 5px 22px 4px rgba(#{$neutral-40}, .06)',
+  16: '0px 8px 10px -5px rgba(#{$neutral-40}, .12), 0px 16px 24px 2px rgba(#{$neutral-40}, .06), 0px 6px 30px 5px rgba(#{$neutral-40}, .06)',
+  24: '0px 11px 15px -7px rgba(#{$neutral-40}, .12), 0px 24px 38px 3px rgba(#{$neutral-40}, .06), 0px 9px 46px 8px rgba(#{$neutral-40}, .06)'
+);
+
+$error-40: functions.colors-convertHEXToRGB(map.get(colors.$md3-error, 40));
+$error: (
+  00: '0px 0px 0px 0px rgba(#{$error-40}, .12), 0px 0px 0px 0px rgba(#{$error-40}, .06), 0px 0px 0px 0px rgba(#{$error-40}, .06)',
+  01: '0px 2px 1px -1px rgba(#{$error-40}, .12), 0px 1px 1px 0px rgba(#{$error-40}, .06), 0px 1px 3px 0px rgba(#{$error-40}, .06)',
+  02: '0px 3px 1px -2px rgba(#{$error-40}, .12), 0px 2px 2px 0px rgba(#{$error-40}, .06), 0px 1px 5px 0px rgba(#{$error-40}, .06)',
+  03: '0px 3px 3px -2px rgba(#{$error-40}, .12), 0px 3px 4px 0px rgba(#{$error-40}, .06), 0px 1px 8px 0px rgba(#{$error-40}, .06)',
+  04: '0px 2px 4px -1px rgba(#{$error-40}, .12), 0px 4px 5px 0px rgba(#{$error-40}, .06), 0px 1px 10px 0px rgba(#{$error-40}, .06)',
+  06: '0px 3px 5px -1px rgba(#{$error-40}, .12), 0px 6px 10px 0px rgba(#{$error-40}, .06), 0px 1px 18px 0px rgba(#{$error-40}, .06)',
+  08: '0px 5px 5px -3px rgba(#{$error-40}, .12), 0px 8px 10px 1px rgba(#{$error-40}, .06), 0px 3px 14px 2px rgba(#{$error-40}, .06)',
+  09: '0px 5px 6px -3px rgba(#{$error-40}, .12), 0px 9px 12px 1px rgba(#{$error-40}, .06), 0px 3px 16px 2px rgba(#{$error-40}, .06)',
+  12: '0px 7px 8px -4px rgba(#{$error-40}, .12), 0px 12px 17px 2px rgba(#{$error-40}, .06), 0px 5px 22px 4px rgba(#{$error-40}, .06)',
+  16: '0px 8px 10px -5px rgba(#{$error-40}, .12), 0px 16px 24px 2px rgba(#{$error-40}, .06), 0px 6px 30px 5px rgba(#{$error-40}, .06)',
+  24: '0px 11px 15px -7px rgba(#{$error-40}, .12), 0px 24px 38px 3px rgba(#{$error-40}, .06), 0px 9px 46px 8px rgba(#{$error-40}, .06)'
+);
+
+$success-40: functions.colors-convertHEXToRGB(map.get(colors.$md3-success, 40));
+$success: (
+  00: '0px 0px 0px 0px rgba(#{$success-40}, .12), 0px 0px 0px 0px rgba(#{$success-40}, .06), 0px 0px 0px 0px rgba(#{$success-40}, .06)',
+  01: '0px 2px 1px -1px rgba(#{$success-40}, .12), 0px 1px 1px 0px rgba(#{$success-40}, .06), 0px 1px 3px 0px rgba(#{$success-40}, .06)',
+  02: '0px 3px 1px -2px rgba(#{$success-40}, .12), 0px 2px 2px 0px rgba(#{$success-40}, .06), 0px 1px 5px 0px rgba(#{$success-40}, .06)',
+  03: '0px 3px 3px -2px rgba(#{$success-40}, .12), 0px 3px 4px 0px rgba(#{$success-40}, .06), 0px 1px 8px 0px rgba(#{$success-40}, .06)',
+  04: '0px 2px 4px -1px rgba(#{$success-40}, .12), 0px 4px 5px 0px rgba(#{$success-40}, .06), 0px 1px 10px 0px rgba(#{$success-40}, .06)',
+  06: '0px 3px 5px -1px rgba(#{$success-40}, .12), 0px 6px 10px 0px rgba(#{$success-40}, .06), 0px 1px 18px 0px rgba(#{$success-40}, .06)',
+  08: '0px 5px 5px -3px rgba(#{$success-40}, .12), 0px 8px 10px 1px rgba(#{$success-40}, .06), 0px 3px 14px 2px rgba(#{$success-40}, .06)',
+  09: '0px 5px 6px -3px rgba(#{$success-40}, .12), 0px 9px 12px 1px rgba(#{$success-40}, .06), 0px 3px 16px 2px rgba(#{$success-40}, .06)',
+  12: '0px 7px 8px -4px rgba(#{$success-40}, .12), 0px 12px 17px 2px rgba(#{$success-40}, .06), 0px 5px 22px 4px rgba(#{$success-40}, .06)',
+  16: '0px 8px 10px -5px rgba(#{$success-40}, .12), 0px 16px 24px 2px rgba(#{$success-40}, .06), 0px 6px 30px 5px rgba(#{$success-40}, .06)',
+  24: '0px 11px 15px -7px rgba(#{$success-40}, .12), 0px 24px 38px 3px rgba(#{$success-40}, .06), 0px 9px 46px 8px rgba(#{$success-40}, .06)'
+);
+
+$warning-40: functions.colors-convertHEXToRGB(map.get(colors.$md3-warning, 40));
+$warning: (
+  00: '0px 0px 0px 0px rgba(#{$warning-40}, .12), 0px 0px 0px 0px rgba(#{$warning-40}, .06), 0px 0px 0px 0px rgba(#{$warning-40}, .06)',
+  01: '0px 2px 1px -1px rgba(#{$warning-40}, .12), 0px 1px 1px 0px rgba(#{$warning-40}, .06), 0px 1px 3px 0px rgba(#{$warning-40}, .06)',
+  02: '0px 3px 1px -2px rgba(#{$warning-40}, .12), 0px 2px 2px 0px rgba(#{$warning-40}, .06), 0px 1px 5px 0px rgba(#{$warning-40}, .06)',
+  03: '0px 3px 3px -2px rgba(#{$warning-40}, .12), 0px 3px 4px 0px rgba(#{$warning-40}, .06), 0px 1px 8px 0px rgba(#{$warning-40}, .06)',
+  04: '0px 2px 4px -1px rgba(#{$warning-40}, .12), 0px 4px 5px 0px rgba(#{$warning-40}, .06), 0px 1px 10px 0px rgba(#{$warning-40}, .06)',
+  06: '0px 3px 5px -1px rgba(#{$warning-40}, .12), 0px 6px 10px 0px rgba(#{$warning-40}, .06), 0px 1px 18px 0px rgba(#{$warning-40}, .06)',
+  08: '0px 5px 5px -3px rgba(#{$warning-40}, .12), 0px 8px 10px 1px rgba(#{$warning-40}, .06), 0px 3px 14px 2px rgba(#{$warning-40}, .06)',
+  09: '0px 5px 6px -3px rgba(#{$warning-40}, .12), 0px 9px 12px 1px rgba(#{$warning-40}, .06), 0px 3px 16px 2px rgba(#{$warning-40}, .06)',
+  12: '0px 7px 8px -4px rgba(#{$warning-40}, .12), 0px 12px 17px 2px rgba(#{$warning-40}, .06), 0px 5px 22px 4px rgba(#{$warning-40}, .06)',
+  16: '0px 8px 10px -5px rgba(#{$warning-40}, .12), 0px 16px 24px 2px rgba(#{$warning-40}, .06), 0px 6px 30px 5px rgba(#{$warning-40}, .06)',
+  24: '0px 11px 15px -7px rgba(#{$warning-40}, .12), 0px 24px 38px 3px rgba(#{$warning-40}, .06), 0px 9px 46px 8px rgba(#{$warning-40}, .06)'
+);
+
+$information-40: functions.colors-convertHEXToRGB(map.get(colors.$md3-information, 40));
+$information: (
+  00: '0px 0px 0px 0px rgba(#{$information-40}, .12), 0px 0px 0px 0px rgba(#{$information-40}, .06), 0px 0px 0px 0px rgba(#{$information-40}, .06)',
+  01: '0px 2px 1px -1px rgba(#{$information-40}, .12), 0px 1px 1px 0px rgba(#{$information-40}, .06), 0px 1px 3px 0px rgba(#{$information-40}, .06)',
+  02: '0px 3px 1px -2px rgba(#{$information-40}, .12), 0px 2px 2px 0px rgba(#{$information-40}, .06), 0px 1px 5px 0px rgba(#{$information-40}, .06)',
+  03: '0px 3px 3px -2px rgba(#{$information-40}, .12), 0px 3px 4px 0px rgba(#{$information-40}, .06), 0px 1px 8px 0px rgba(#{$information-40}, .06)',
+  04: '0px 2px 4px -1px rgba(#{$information-40}, .12), 0px 4px 5px 0px rgba(#{$information-40}, .06), 0px 1px 10px 0px rgba(#{$information-40}, .06)',
+  06: '0px 3px 5px -1px rgba(#{$information-40}, .12), 0px 6px 10px 0px rgba(#{$information-40}, .06), 0px 1px 18px 0px rgba(#{$information-40}, .06)',
+  08: '0px 5px 5px -3px rgba(#{$information-40}, .12), 0px 8px 10px 1px rgba(#{$information-40}, .06), 0px 3px 14px 2px rgba(#{$information-40}, .06)',
+  09: '0px 5px 6px -3px rgba(#{$information-40}, .12), 0px 9px 12px 1px rgba(#{$information-40}, .06), 0px 3px 16px 2px rgba(#{$information-40}, .06)',
+  12: '0px 7px 8px -4px rgba(#{$information-40}, .12), 0px 12px 17px 2px rgba(#{$information-40}, .06), 0px 5px 22px 4px rgba(#{$information-40}, .06)',
+  16: '0px 8px 10px -5px rgba(#{$information-40}, .12), 0px 16px 24px 2px rgba(#{$information-40}, .06), 0px 6px 30px 5px rgba(#{$information-40}, .06)',
+  24: '0px 11px 15px -7px rgba(#{$information-40}, .12), 0px 24px 38px 3px rgba(#{$information-40}, .06), 0px 9px 46px 8px rgba(#{$information-40}, .06)'
+);

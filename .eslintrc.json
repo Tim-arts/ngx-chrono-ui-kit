@@ -1,0 +1,3 @@
+{
+  "extends": "@ngx-chrono-ui-kit/eslint-config"
+}

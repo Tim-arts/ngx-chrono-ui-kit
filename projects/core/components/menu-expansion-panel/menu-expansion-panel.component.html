@@ -1,0 +1,54 @@
+<mat-expansion-panel
+  [disabled]="disabled"
+  [expanded]="expanded"
+  [hideToggle]="hideToggle"
+  [@visibilityState]="visible"
+  cdkDrag
+  [cdkDragDisabled]="!draggable"
+  [cdkDragBoundary]="draggableBoundary"
+  [ngClass]="{ 'mat-expansion-panel-hide-toggle': hideToggle }"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <ui-kit-button
+        icon="drag_indicator"
+        type="text"
+        size="mini"
+        iconPosition="center"
+        class="dragging-handle"
+        cdkDragHandle
+        [rippleOptions]="{ disabled: true }"
+        (click)="$event.stopPropagation()"
+        *ngIf="draggable && !disabled"
+      ></ui-kit-button>
+      <div class="text-title-medium menu-expansion-panel-title">
+        <span
+          class="menu-expansion-panel-title-number text-align-center"
+          *ngIf="title?.number"
+          >{{ title?.number }}</span
+        >
+        <span
+          class="menu-expansion-panel-title-text text-ellipsis"
+          title="{{ title?.text }}"
+          >{{ title?.text }}</span
+        >
+      </div>
+    </mat-panel-title>
+    <ng-container *ngFor="let headerIcon of headerIcons">
+      <ui-kit-button
+        [icon]="headerIcon?.icon?.fontIcon"
+        type="text"
+        size="mini"
+        iconPosition="center"
+        (click)="
+          $event.stopPropagation();
+          isCloseIcon($any(headerIcon)?.icon)
+            ? togglePanelVisibility()
+            : executeIconAction($event, headerIcon)
+        "
+        *ngIf="displayIcon(headerIcon)"
+      ></ui-kit-button>
+    </ng-container>
+  </mat-expansion-panel-header>
+  <ng-content></ng-content>
+</mat-expansion-panel>

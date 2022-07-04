@@ -1,0 +1,26 @@
+/// Compute the maximum depth of a map
+/// @param {Map} $map
+/// @return {Number} max depth of `$map`
+@function map-depth($map) {
+  $level: 1;
+
+  @each $key, $value in $map {
+    @if type-of($value) == 'map' {
+      $level: map-depth(value) + 1;
+    }
+  }
+
+  @return $level;
+}
+
+// Fetch nested keys
+// @param {Map} $map - Map
+// @param {ArgList} $keys - Keys to fetch
+// @return {*}
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+
+  @return $map;
+}

@@ -1,0 +1,19 @@
+@use 'sass:map';
+
+@use '../../abstracts/colors' as colors;
+@use '../../abstracts/functions' as functions;
+@use '../../abstracts/mixins' as mixins;
+@use '../../abstracts/variables' as variables;
+
+.mat-menu-panel {
+  background-color: functions.shared-map-deep-get(colors.$surface, sys, surface) !important;
+
+  .mat-menu-item {
+    input[type="checkbox"] {
+      & + label {
+        margin-left: map.get(variables.$spacings, 08);
+        font-weight: inherit;
+      }
+    }
+  }
+}

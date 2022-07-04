@@ -1,0 +1,57 @@
+<div
+  class="
+    button-container
+    {{ color ? 'button-color-' + color : '' }}
+    {{ type ? 'button-type-' + type : '' }}
+    {{ size ? 'button-size-' + type + '-' + size : '' }}
+    position-relative
+  "
+  [ngClass]="{
+    'button-menu': hasMenu && (type === 'fab' || type === 'text'),
+    'icon-first': iconPosition === 'left' && textContent && type !== 'fab',
+    'icon-last': iconPosition === 'right' && textContent && type !== 'fab',
+    'button-inverted': inverted
+  }"
+>
+  <button
+    class="button-content d-flex align-items-center justify-content-center"
+    matRipple
+    [matRippleDisabled]="!!rippleOptions?.disabled"
+    aria-hidden="false"
+    aria-label="button"
+    [disabled]="disabled"
+  >
+    <span
+      [ngClass]="{
+        'order-1': iconPosition === 'right',
+        'order-2': iconPosition === 'left'
+      }"
+      *ngIf="
+        textContent &&
+        iconPosition !== 'center' &&
+        type !== 'fab' &&
+        !(type === 'text' && size === 'mini')
+      "
+      >{{ textContent }}</span
+    >
+    <mat-icon
+      [ngClass]="{
+        'mat-icon-small':
+          type === 'elevated' ||
+          type === 'filled' ||
+          type === 'filled-tonal' ||
+          type === 'outlined' ||
+          type === 'text',
+        'mat-icon-large': size === 'large' && type === 'fab',
+        'order-1': iconPosition === 'left',
+        'order-2': iconPosition === 'right'
+      }"
+      *ngIf="
+        (icon && (!textContent || iconPosition !== 'none')) ||
+        (type === 'fab' && iconPosition === 'none')
+      "
+      >{{ icon }}</mat-icon
+    >
+    <ng-content></ng-content>
+  </button>
+</div>

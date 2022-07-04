@@ -1,0 +1,11 @@
+@use 'sass:map';
+
+@use '../../../scss/abstracts/colors' as colors;
+@use '../../../scss/abstracts/variables' as variables;
+
+ui-kit-time-range-picker-separated {
+  hr {
+    border-top: none;
+    border-bottom-color: map.get(colors.$md3-neutral, 90);
+  }
+}

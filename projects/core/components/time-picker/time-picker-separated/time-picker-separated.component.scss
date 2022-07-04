@@ -1,0 +1,73 @@
+@use 'sass:map';
+
+@use '../../../scss/abstracts/colors' as colors;
+@use '../../../scss/abstracts/variables' as variables;
+
+$size: 3.2rem;
+
+ui-kit-time-picker-separated {
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  .time-picker-container {
+    padding: 0 map.get(variables.$spacings, 16);
+  }
+
+  .input-container, input[type="number"] {
+    border: 1px solid transparent;
+    border-radius: map.get(variables.$border-radius, 04);
+    transition: background .3s ease, border-color .3s ease;
+  }
+
+  .input-container {
+    background-color: map.get(colors.$md3-primary, 95);
+
+    &:hover {
+      background-color: transparent;
+      border-color: map.get(colors.$md3-primary, 40);
+    }
+  }
+
+  input[type="number"], button {
+    font-family: "Manrope", sans-serif;
+  }
+
+  input[type="number"] {
+    width: 100%;
+    background-color: transparent;
+
+    &:focus-visible {
+      outline: 0;
+    }
+  }
+
+  .action-display-hours, .action-display-minutes {
+    bottom: 0;
+    left: 0;
+
+    mat-icon {
+      color: map.get(colors.$md3-primary, 80);
+    }
+  }
+
+  button {
+    font-size: 1.6rem;
+    width: $size;
+    height: $size;
+    background-color: transparent;
+    border: none;
+    border-radius: map.get(variables.$border-radius, 04);
+
+    &:hover {
+      color: map.get(colors.$md3-primary, 40);
+      background-color: map.get(colors.$md3-primary, 95);
+    }
+  }
+
+  .hours-container, .minutes-container {
+    max-width: 200px;
+  }
+}

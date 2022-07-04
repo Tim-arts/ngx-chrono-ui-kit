@@ -1,0 +1,14 @@
+{
+  "name": "@ngx-chrono-ui-kit/prettier-config",
+  "version": "0.0.5",
+  "main": "index.js",
+  "peerDependencies": {
+    "prettier": "^2.5.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  },
+  "publishConfig": {
+    "registry": "https://pkgs.dev.azure.com/projetsrtm/7fa9506a-027e-4309-8662-a77197956248/_packaging/Chrono_UI_Kit/npm/registry/"
+  }
+}

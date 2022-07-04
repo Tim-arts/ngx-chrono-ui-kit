@@ -1,0 +1,103 @@
+@use 'sass:map';
+
+@use '../../scss/abstracts/variables' as variables;
+@use '../../scss/abstracts/colors' as colors;
+@use '../../scss/abstracts/typography' as typography;
+@use '../../scss/abstracts/functions' as functions;
+@use '../../scss/abstracts/mixins' as mixins;
+@use '../../scss/abstracts/elevations' as elevations;
+
+@use '../../scss/components/common/cdkdraghandle';
+
+$component-header-height: 5.6rem;
+
+ui-kit-menu-expansion-panel {
+  mat-expansion-panel-header {
+    ui-kit-button {
+      margin-right: .8rem;
+    }
+  }
+
+  .mat-content {
+    @include mixins.layout-align-items-center;
+  }
+
+  .menu-expansion-panel-title {
+    @include mixins.layout-d-flex;
+    @include mixins.layout-align-items-center;
+
+    &-number {
+      min-width: 3.2rem;
+      background-color: functions.shared-map-deep-get(colors.$surface, sys, on-surface);
+      color: functions.shared-map-deep-get(colors.$surface, sys, surface);
+      padding: map.get(variables.$spacings, 04) map.get(variables.$spacings, 06);
+      margin-right: map.get(variables.$spacings, 08);
+      border-radius: map.get(variables.$border-radius, 04);
+    }
+
+    &-text {
+      max-width: 25rem;
+    }
+  }
+
+  .mat-expansion-panel {
+    width: fit-content;
+    min-width: 30rem;
+    border-radius: map.get(variables.$border-radius, 16);
+    background-color: functions.shared-map-deep-get(colors.$surface, sys, surface) !important;
+
+    &.mat-expansion-panel-hide-toggle {
+      .mat-content {
+        ui-kit-button:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+
+    &:not([class*=mat-elevation-z]) {
+      box-shadow: unquote(map.get(elevations.$neutral, 02)) !important;
+    }
+  }
+
+  .mat-expansion-panel-header {
+    padding: 0 map.get(variables.$spacings, 16);
+
+    &.mat-expanded {
+      height: $component-header-height !important;
+    }
+  }
+
+  .mat-expansion-panel-body {
+    border-top: 1px solid map.get(colors.$md3-neutral, 95);
+    color: functions.shared-map-deep-get(colors.$surface, sys, on-surface-variant);
+    padding: map.get(variables.$spacings, 08) map.get(variables.$spacings, 16);
+  }
+
+  .mat-expansion-indicator {
+    margin: 0 map.get(variables.$spacings, 08);
+
+    &::after {
+      position: relative;
+      top: -.3rem;
+    }
+  }
+
+  .mat-expansion-panel-content {
+    font-size: map.get(typography.$body2, font-size);
+    font-weight: map.get(typography.$body2, font-weight);
+    line-height: map.get(typography.$body2, line-height);
+    letter-spacing: map.get(typography.$body2, letter-spacing);
+  }
+
+  .mat-expansion-panel-header[aria-disabled=true] {
+    .mat-expansion-panel-header-title {
+      margin-right: 0;
+    }
+  }
+
+  .mat-expansion-toggle-indicator-before {
+    mat-icon:not(:last-child) {
+      margin-right: .8rem;
+    }
+  }
+}

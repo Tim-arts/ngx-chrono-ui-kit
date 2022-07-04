@@ -1,0 +1,7 @@
+@use '../../node_modules/@angular/material' as mat;
+@use './typography' as typography;
+@use './light-theme';
+
+@use './components';
+
+@include mat.core(typography.$custom-typography-config);

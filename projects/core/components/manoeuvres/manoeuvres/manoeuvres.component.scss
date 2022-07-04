@@ -1,0 +1,18 @@
+:host {
+    display: grid;
+    top: 0;
+    bottom: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "listView"
+    ;
+}
+
+.listView {
+    grid-area: listView;
+    display: grid;
+    width: 100%;
+    overflow: auto;
+    max-height: 290px;
+}

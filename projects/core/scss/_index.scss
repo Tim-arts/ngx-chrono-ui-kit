@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+// 1. Vendors
+@use './vendors';
+
+// 2. Layout-related sections
+// @use './layout'
+
+// 3. Themes
+@use './themes';
+
+// 4. Helpers
+@use './base';
+
+// 5. Components
+@use './components';
+
+

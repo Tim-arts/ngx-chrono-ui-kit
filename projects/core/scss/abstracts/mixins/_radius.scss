@@ -1,0 +1,7 @@
+@mixin calculate($spacings) {
+  @each $key, $val in $spacings {
+    .border-radius-#{$key} {
+      border-radius: #{$val};
+    }
+  }
+}
